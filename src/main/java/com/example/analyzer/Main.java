@@ -1,6 +1,7 @@
 package com.example.analyzer;
 
 import com.example.analyzer.core.CallChainEngine;
+import com.example.analyzer.core.ProjectScanner;
 import com.example.analyzer.exporter.JsonExporter;
 import com.example.analyzer.model.AnalysisResult;
 import org.slf4j.Logger;
@@ -24,6 +25,18 @@ public class Main {
             }
 
             AnalyzerConfig config = parseArguments(args);
+
+            // Discover services from servicesDir if provided
+            if (config.servicesDir != null && !config.servicesDir.trim().isEmpty()) {
+                ProjectScanner scanner = new ProjectScanner();
+                List<String> discovered = scanner.discoverServiceDirs(config.servicesDir, config.recursive);
+                if (discovered.isEmpty()) {
+                    logger.warn("No services discovered under {}", config.servicesDir);
+                } else {
+                    logger.info("Discovered services: {}", discovered);
+                    config.servicePaths.addAll(discovered);
+                }
+            }
 
             if (config.servicePaths.isEmpty()) {
                 System.err.println("Error: No service paths provided");
@@ -78,6 +91,16 @@ public class Main {
                         config.servicePaths.addAll(Arrays.asList(paths));
                     }
                     break;
+                case "--services-dir":
+                case "-d":
+                    if (i + 1 < args.length) {
+                        config.servicesDir = args[++i];
+                    }
+                    break;
+                case "--recursive":
+                case "-r":
+                    config.recursive = true;
+                    break;
                 case "--output":
                 case "-o":
                     if (i + 1 < args.length) {
@@ -112,6 +135,8 @@ public class Main {
         System.out.println("Options:");
         System.out.println("  -s, --service <path>       Path to a single service directory");
         System.out.println("  --services <paths>         Comma-separated list of service paths");
+        System.out.println("  -d, --services-dir <dir>   Discover services under a parent directory");
+        System.out.println("  -r, --recursive            Recursively discover services under --services-dir");
         System.out.println("  -o, --output <file>        Output JSON file path (default: analysis-result.json)");
         System.out.println("  --pretty                   Pretty-print JSON output");
         System.out.println("  -h, --help                 Show this help message");
@@ -123,6 +148,9 @@ public class Main {
         System.out.println("  # Analyze multiple services");
         System.out.println("  java -jar analyzer.jar --services ./user-service,./order-service --output chains.json");
         System.out.println();
+        System.out.println("  # Discover services under a parent directory (Windows PowerShell)");
+        System.out.println("  java -jar analyzer.jar --services-dir .\\services --recursive --output chains.json");
+        System.out.println();
         System.out.println("  # Analyze with pretty-printed output");
         System.out.println("  java -jar analyzer.jar --service ./user-service --output result.json --pretty");
     }
@@ -131,5 +159,7 @@ public class Main {
         List<String> servicePaths = new ArrayList<>();
         String outputPath = "analysis-result.json";
         boolean prettyPrint = true;  // Default to pretty print
+        String servicesDir;
+        boolean recursive = false;
     }
 }

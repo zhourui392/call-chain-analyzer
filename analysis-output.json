@@ -1,0 +1,390 @@
+{
+  "metadata" : {
+    "analysisTime" : "2025-11-07T08:04:47.745",
+    "projectName" : "multi-service-analysis",
+    "totalServices" : 1,
+    "totalClasses" : 3,
+    "totalMethods" : 12
+  },
+  "services" : [ {
+    "id" : "d286b041-9d3e-4fef-bd42-ec83c1300f1e",
+    "name" : "User Service",
+    "groupId" : "com.example",
+    "artifactId" : "user-service",
+    "version" : "1.0.0",
+    "basePackage" : "com.example.user.service",
+    "rootPath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project/user-service"
+  } ],
+  "classes" : [ {
+    "id" : "935f9b1c-3c94-4b96-8d4c-60f95e51748a",
+    "serviceId" : "d286b041-9d3e-4fef-bd42-ec83c1300f1e",
+    "packageName" : "com.example.user.service",
+    "className" : "UserService",
+    "qualifiedName" : "com.example.user.service.UserService",
+    "type" : "SERVICE",
+    "annotations" : [ "@@Service" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project/user-service/src/main/java/com/example/user/service/UserService.java",
+    "dependencies" : [ ]
+  }, {
+    "id" : "403987b2-f56c-49e7-ba1a-a5900404662b",
+    "serviceId" : "d286b041-9d3e-4fef-bd42-ec83c1300f1e",
+    "packageName" : "com.example.user.model",
+    "className" : "User",
+    "qualifiedName" : "com.example.user.model.User",
+    "type" : "PLAIN_CLASS",
+    "annotations" : [ ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project/user-service/src/main/java/com/example/user/model/User.java",
+    "dependencies" : [ ]
+  }, {
+    "id" : "d86558cd-43e4-49d0-b968-4c43fcdc2434",
+    "serviceId" : "d286b041-9d3e-4fef-bd42-ec83c1300f1e",
+    "packageName" : "com.example.user.controller",
+    "className" : "UserController",
+    "qualifiedName" : "com.example.user.controller.UserController",
+    "type" : "CONTROLLER",
+    "annotations" : [ "@@RestController", "@@RequestMapping(\"/api/users\")" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project/user-service/src/main/java/com/example/user/controller/UserController.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "UserService",
+      "fieldName" : "userService",
+      "injectionType" : "AUTOWIRED",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    } ]
+  } ],
+  "methods" : [ {
+    "id" : "68da47c0-a7fb-4cab-b46c-f8c85117a903",
+    "classId" : "935f9b1c-3c94-4b96-8d4c-60f95e51748a",
+    "methodName" : "findUserById",
+    "signature" : "User findUserById(Long)",
+    "returnType" : "User",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 9,
+    "lineEnd" : 16
+  }, {
+    "id" : "cc6d3608-ad32-4795-8008-9f4fe1417ca8",
+    "classId" : "935f9b1c-3c94-4b96-8d4c-60f95e51748a",
+    "methodName" : "createUser",
+    "signature" : "User createUser(User)",
+    "returnType" : "User",
+    "parameters" : [ {
+      "name" : "user",
+      "type" : "User",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 18,
+    "lineEnd" : 22
+  }, {
+    "id" : "2bead354-29a6-488f-abe2-f8b95e352146",
+    "classId" : "935f9b1c-3c94-4b96-8d4c-60f95e51748a",
+    "methodName" : "deleteUser",
+    "signature" : "void deleteUser(Long)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 24,
+    "lineEnd" : 27
+  }, {
+    "id" : "3b7a1c6f-626b-4ae0-8b8f-224022ab756a",
+    "classId" : "403987b2-f56c-49e7-ba1a-a5900404662b",
+    "methodName" : "getId",
+    "signature" : "Long getId()",
+    "returnType" : "Long",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 8,
+    "lineEnd" : 10
+  }, {
+    "id" : "6cee9262-1247-436d-a1eb-7455b2a5d8eb",
+    "classId" : "403987b2-f56c-49e7-ba1a-a5900404662b",
+    "methodName" : "setId",
+    "signature" : "void setId(Long)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 12,
+    "lineEnd" : 14
+  }, {
+    "id" : "48318305-a3fb-4e9b-b711-93ddd8352ed2",
+    "classId" : "403987b2-f56c-49e7-ba1a-a5900404662b",
+    "methodName" : "getName",
+    "signature" : "String getName()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 16,
+    "lineEnd" : 18
+  }, {
+    "id" : "05843b12-d37c-436a-901a-3d7cba8f835a",
+    "classId" : "403987b2-f56c-49e7-ba1a-a5900404662b",
+    "methodName" : "setName",
+    "signature" : "void setName(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "name",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 20,
+    "lineEnd" : 22
+  }, {
+    "id" : "3c0cd47a-bbce-489e-b1f3-0187017ed953",
+    "classId" : "403987b2-f56c-49e7-ba1a-a5900404662b",
+    "methodName" : "getEmail",
+    "signature" : "String getEmail()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 24,
+    "lineEnd" : 26
+  }, {
+    "id" : "bd84c155-7c5a-41e7-9311-5e42e46c17b7",
+    "classId" : "403987b2-f56c-49e7-ba1a-a5900404662b",
+    "methodName" : "setEmail",
+    "signature" : "void setEmail(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "email",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 28,
+    "lineEnd" : 30
+  }, {
+    "id" : "53b60bfc-7294-4c38-9d07-1c9c7184e53e",
+    "classId" : "d86558cd-43e4-49d0-b968-4c43fcdc2434",
+    "methodName" : "getUser",
+    "signature" : "User getUser(Long)",
+    "returnType" : "User",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ "@@GetMapping(\"/{id}\")" ],
+    "lineStart" : 15,
+    "lineEnd" : 18
+  }, {
+    "id" : "37bcd7d1-29e0-4e67-b82e-923c5229b7e0",
+    "classId" : "d86558cd-43e4-49d0-b968-4c43fcdc2434",
+    "methodName" : "createUser",
+    "signature" : "User createUser(User)",
+    "returnType" : "User",
+    "parameters" : [ {
+      "name" : "user",
+      "type" : "User",
+      "index" : 0
+    } ],
+    "annotations" : [ "@@PostMapping" ],
+    "lineStart" : 20,
+    "lineEnd" : 23
+  }, {
+    "id" : "75394f5e-2c80-4d20-ac22-8af9426c18c9",
+    "classId" : "d86558cd-43e4-49d0-b968-4c43fcdc2434",
+    "methodName" : "deleteUser",
+    "signature" : "void deleteUser(Long)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ "@@DeleteMapping(\"/{id}\")" ],
+    "lineStart" : 25,
+    "lineEnd" : 28
+  } ],
+  "methodCalls" : [ {
+    "id" : "7f8ca14a-2465-4465-ac71-d63243e9db15",
+    "sourceMethodId" : "68da47c0-a7fb-4cab-b46c-f8c85117a903",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 12,
+    "callerExpression" : "user.setId(id)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "7984edef-9801-4e3b-bde1-7a477705a526",
+    "sourceMethodId" : "68da47c0-a7fb-4cab-b46c-f8c85117a903",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 13,
+    "callerExpression" : "user.setName(\"John Doe\")",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "10898e8a-1ea1-4eb0-8e75-9d336e8ab928",
+    "sourceMethodId" : "68da47c0-a7fb-4cab-b46c-f8c85117a903",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 14,
+    "callerExpression" : "user.setEmail(\"john@example.com\")",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "23539df4-30e5-46ba-8299-13e1ceb5de2f",
+    "sourceMethodId" : "cc6d3608-ad32-4795-8008-9f4fe1417ca8",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 20,
+    "callerExpression" : "user.setId(System.currentTimeMillis())",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "c98bce22-58ae-4509-b3ce-ad34bc606994",
+    "sourceMethodId" : "cc6d3608-ad32-4795-8008-9f4fe1417ca8",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 20,
+    "callerExpression" : "System.currentTimeMillis()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "18882bc9-b393-48aa-a680-82342d8d5905",
+    "sourceMethodId" : "2bead354-29a6-488f-abe2-f8b95e352146",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 26,
+    "callerExpression" : "System.out.println(\"Deleting user: \" + id)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "8764469f-b837-4cbf-bd50-8b5cfe086b03",
+    "sourceMethodId" : "53b60bfc-7294-4c38-9d07-1c9c7184e53e",
+    "targetMethodId" : "68da47c0-a7fb-4cab-b46c-f8c85117a903",
+    "targetQualifiedMethod" : "com.example.user.service.UserService.findUserById",
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 17,
+    "callerExpression" : "userService.findUserById(id)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "66ba8375-ce28-4c3f-aee5-ff66af773ccd",
+    "sourceMethodId" : "37bcd7d1-29e0-4e67-b82e-923c5229b7e0",
+    "targetMethodId" : "cc6d3608-ad32-4795-8008-9f4fe1417ca8",
+    "targetQualifiedMethod" : "com.example.user.service.UserService.createUser",
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 22,
+    "callerExpression" : "userService.createUser(user)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "3ec78946-32c3-4083-87ae-d76aa2f5d0ca",
+    "sourceMethodId" : "75394f5e-2c80-4d20-ac22-8af9426c18c9",
+    "targetMethodId" : "2bead354-29a6-488f-abe2-f8b95e352146",
+    "targetQualifiedMethod" : "com.example.user.service.UserService.deleteUser",
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 27,
+    "callerExpression" : "userService.deleteUser(id)",
+    "crossService" : false,
+    "targetService" : null
+  } ],
+  "callChains" : [ {
+    "id" : "29be1090-c869-4011-a3b9-aa6fb17b133c",
+    "entryPoint" : {
+      "level" : 0,
+      "methodId" : "53b60bfc-7294-4c38-9d07-1c9c7184e53e",
+      "classId" : "d86558cd-43e4-49d0-b968-4c43fcdc2434",
+      "serviceId" : "d286b041-9d3e-4fef-bd42-ec83c1300f1e",
+      "callType" : null,
+      "httpEndpoint" : "GET /api/users/{id}"
+    },
+    "chain" : [ {
+      "level" : 0,
+      "methodId" : "53b60bfc-7294-4c38-9d07-1c9c7184e53e",
+      "classId" : "d86558cd-43e4-49d0-b968-4c43fcdc2434",
+      "serviceId" : "d286b041-9d3e-4fef-bd42-ec83c1300f1e",
+      "callType" : null,
+      "httpEndpoint" : "GET /api/users/{id}"
+    }, {
+      "level" : 1,
+      "methodId" : "68da47c0-a7fb-4cab-b46c-f8c85117a903",
+      "classId" : "935f9b1c-3c94-4b96-8d4c-60f95e51748a",
+      "serviceId" : "d286b041-9d3e-4fef-bd42-ec83c1300f1e",
+      "callType" : "INTERNAL_METHOD_CALL",
+      "httpEndpoint" : null
+    } ],
+    "maxDepth" : 2,
+    "involvedServices" : [ "d286b041-9d3e-4fef-bd42-ec83c1300f1e" ],
+    "crossService" : false
+  }, {
+    "id" : "f816f221-8073-4c26-8ce1-28b59072c6e0",
+    "entryPoint" : {
+      "level" : 0,
+      "methodId" : "37bcd7d1-29e0-4e67-b82e-923c5229b7e0",
+      "classId" : "d86558cd-43e4-49d0-b968-4c43fcdc2434",
+      "serviceId" : "d286b041-9d3e-4fef-bd42-ec83c1300f1e",
+      "callType" : null,
+      "httpEndpoint" : "POST /api/users"
+    },
+    "chain" : [ {
+      "level" : 0,
+      "methodId" : "37bcd7d1-29e0-4e67-b82e-923c5229b7e0",
+      "classId" : "d86558cd-43e4-49d0-b968-4c43fcdc2434",
+      "serviceId" : "d286b041-9d3e-4fef-bd42-ec83c1300f1e",
+      "callType" : null,
+      "httpEndpoint" : "POST /api/users"
+    }, {
+      "level" : 1,
+      "methodId" : "cc6d3608-ad32-4795-8008-9f4fe1417ca8",
+      "classId" : "935f9b1c-3c94-4b96-8d4c-60f95e51748a",
+      "serviceId" : "d286b041-9d3e-4fef-bd42-ec83c1300f1e",
+      "callType" : "INTERNAL_METHOD_CALL",
+      "httpEndpoint" : null
+    } ],
+    "maxDepth" : 2,
+    "involvedServices" : [ "d286b041-9d3e-4fef-bd42-ec83c1300f1e" ],
+    "crossService" : false
+  }, {
+    "id" : "dadeccbc-5def-4ff2-bc26-9aec962bf86c",
+    "entryPoint" : {
+      "level" : 0,
+      "methodId" : "75394f5e-2c80-4d20-ac22-8af9426c18c9",
+      "classId" : "d86558cd-43e4-49d0-b968-4c43fcdc2434",
+      "serviceId" : "d286b041-9d3e-4fef-bd42-ec83c1300f1e",
+      "callType" : null,
+      "httpEndpoint" : "DELETE /api/users/{id}"
+    },
+    "chain" : [ {
+      "level" : 0,
+      "methodId" : "75394f5e-2c80-4d20-ac22-8af9426c18c9",
+      "classId" : "d86558cd-43e4-49d0-b968-4c43fcdc2434",
+      "serviceId" : "d286b041-9d3e-4fef-bd42-ec83c1300f1e",
+      "callType" : null,
+      "httpEndpoint" : "DELETE /api/users/{id}"
+    }, {
+      "level" : 1,
+      "methodId" : "2bead354-29a6-488f-abe2-f8b95e352146",
+      "classId" : "935f9b1c-3c94-4b96-8d4c-60f95e51748a",
+      "serviceId" : "d286b041-9d3e-4fef-bd42-ec83c1300f1e",
+      "callType" : "INTERNAL_METHOD_CALL",
+      "httpEndpoint" : null
+    } ],
+    "maxDepth" : 2,
+    "involvedServices" : [ "d286b041-9d3e-4fef-bd42-ec83c1300f1e" ],
+    "crossService" : false
+  } ]
+}

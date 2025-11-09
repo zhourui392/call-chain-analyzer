@@ -1,0 +1,3919 @@
+{
+  "metadata" : {
+    "analysisTime" : "2025-11-09T15:07:22.201",
+    "projectName" : "multi-service-analysis",
+    "totalServices" : 5,
+    "totalClasses" : 30,
+    "totalMethods" : 122
+  },
+  "services" : [ {
+    "id" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+    "name" : "Product Service",
+    "groupId" : "com.example",
+    "artifactId" : "product-service",
+    "version" : "1.0.0",
+    "basePackage" : "com.example.product.api",
+    "rootPath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/product-service"
+  }, {
+    "id" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+    "name" : "User Service",
+    "groupId" : "com.example",
+    "artifactId" : "user-service",
+    "version" : "1.0.0",
+    "basePackage" : "com.example.user.api",
+    "rootPath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/user-service"
+  }, {
+    "id" : "c8ee012f-f71b-4ded-8f7a-547ed5cf8566",
+    "name" : "Notification Service",
+    "groupId" : "com.example",
+    "artifactId" : "notification-service",
+    "version" : "1.0.0",
+    "basePackage" : "com.example.notification.api",
+    "rootPath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/notification-service"
+  }, {
+    "id" : "60a4e5f0-4651-4149-b4f8-30c694477796",
+    "name" : "Payment Service",
+    "groupId" : "com.example",
+    "artifactId" : "payment-service",
+    "version" : "1.0.0",
+    "basePackage" : "com.example.payment.api",
+    "rootPath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/payment-service"
+  }, {
+    "id" : "5fd009a6-5117-4d21-9c19-56110c825af7",
+    "name" : "Order Service",
+    "groupId" : "com.example",
+    "artifactId" : "order-service",
+    "version" : "1.0.0",
+    "basePackage" : "com.example.order.api",
+    "rootPath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/order-service"
+  } ],
+  "classes" : [ {
+    "id" : "ce010305-c748-4512-b16b-62bcc8cb31c8",
+    "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+    "packageName" : "com.example.product.api",
+    "className" : "ProductService",
+    "qualifiedName" : "com.example.product.api.ProductService",
+    "type" : "INTERFACE",
+    "annotations" : [ ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/product-service/src/main/java/com/example/product/api/ProductService.java",
+    "dependencies" : [ ]
+  }, {
+    "id" : "1963f9d2-717a-421f-9d27-45fa6c4d372f",
+    "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+    "packageName" : "com.example.product.api",
+    "className" : "RecommendationService",
+    "qualifiedName" : "com.example.product.api.RecommendationService",
+    "type" : "INTERFACE",
+    "annotations" : [ ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/product-service/src/main/java/com/example/product/api/RecommendationService.java",
+    "dependencies" : [ ]
+  }, {
+    "id" : "f5c5f4ce-4a90-46ce-8530-c93dd8fb448f",
+    "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+    "packageName" : "com.example.product.service",
+    "className" : "InventoryService",
+    "qualifiedName" : "com.example.product.service.InventoryService",
+    "type" : "SERVICE",
+    "annotations" : [ "@@Service" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/product-service/src/main/java/com/example/product/service/InventoryService.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "InventoryRepository",
+      "fieldName" : "inventoryRepository",
+      "injectionType" : "AUTOWIRED",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    } ]
+  }, {
+    "id" : "d2178815-48c4-4407-92f5-43f0c9808e21",
+    "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+    "packageName" : "com.example.product.service",
+    "className" : "RecommendationServiceImpl",
+    "qualifiedName" : "com.example.product.service.RecommendationServiceImpl",
+    "type" : "DUBBO_SERVICE",
+    "annotations" : [ "@@DubboService(version = \"1.0.0\", group = \"ecommerce\")" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/product-service/src/main/java/com/example/product/service/RecommendationServiceImpl.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "ProductRepository",
+      "fieldName" : "productRepository",
+      "injectionType" : "AUTOWIRED",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "InventoryService",
+      "fieldName" : "inventoryService",
+      "injectionType" : "AUTOWIRED",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    } ]
+  }, {
+    "id" : "7c492bef-842d-4394-b4f2-785d9f736840",
+    "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+    "packageName" : "com.example.product.service",
+    "className" : "ProductServiceImpl",
+    "qualifiedName" : "com.example.product.service.ProductServiceImpl",
+    "type" : "DUBBO_SERVICE",
+    "annotations" : [ "@@DubboService(version = \"1.0.0\", group = \"ecommerce\")" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/product-service/src/main/java/com/example/product/service/ProductServiceImpl.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "ProductRepository",
+      "fieldName" : "productRepository",
+      "injectionType" : "AUTOWIRED",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "InventoryService",
+      "fieldName" : "inventoryService",
+      "injectionType" : "AUTOWIRED",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    } ]
+  }, {
+    "id" : "7bbab71f-4797-4b17-9174-23bb3afaf29e",
+    "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+    "packageName" : "com.example.product.model",
+    "className" : "Inventory",
+    "qualifiedName" : "com.example.product.model.Inventory",
+    "type" : "PLAIN_CLASS",
+    "annotations" : [ ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/product-service/src/main/java/com/example/product/model/Inventory.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "productId",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "Integer",
+      "fieldName" : "stock",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "Integer",
+      "fieldName" : "reserved",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    } ]
+  }, {
+    "id" : "0eba09d8-a52f-40ff-8e77-9cc88edbab3d",
+    "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+    "packageName" : "com.example.product.model",
+    "className" : "Product",
+    "qualifiedName" : "com.example.product.model.Product",
+    "type" : "PLAIN_CLASS",
+    "annotations" : [ ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/product-service/src/main/java/com/example/product/model/Product.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "id",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "name",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "category",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "Double",
+      "fieldName" : "price",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    } ]
+  }, {
+    "id" : "e9f1095d-31d1-4608-8c56-b688d4485378",
+    "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+    "packageName" : "com.example.product.repository",
+    "className" : "InventoryRepository",
+    "qualifiedName" : "com.example.product.repository.InventoryRepository",
+    "type" : "REPOSITORY",
+    "annotations" : [ "@@Repository" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/product-service/src/main/java/com/example/product/repository/InventoryRepository.java",
+    "dependencies" : [ ]
+  }, {
+    "id" : "ea92efb9-64be-4920-8a78-fba7bed1bc13",
+    "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+    "packageName" : "com.example.product.repository",
+    "className" : "ProductRepository",
+    "qualifiedName" : "com.example.product.repository.ProductRepository",
+    "type" : "REPOSITORY",
+    "annotations" : [ "@@Repository" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/product-service/src/main/java/com/example/product/repository/ProductRepository.java",
+    "dependencies" : [ ]
+  }, {
+    "id" : "98c75cb5-d6ac-4bf2-af13-1218290b0102",
+    "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+    "packageName" : "com.example.user.api",
+    "className" : "UserInfoService",
+    "qualifiedName" : "com.example.user.api.UserInfoService",
+    "type" : "INTERFACE",
+    "annotations" : [ ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/user-service/src/main/java/com/example/user/api/UserInfoService.java",
+    "dependencies" : [ ]
+  }, {
+    "id" : "9b532363-a55d-44e1-b836-5c338fdbb31f",
+    "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+    "packageName" : "com.example.user.service",
+    "className" : "UserService",
+    "qualifiedName" : "com.example.user.service.UserService",
+    "type" : "SERVICE",
+    "annotations" : [ "@@Service" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/user-service/src/main/java/com/example/user/service/UserService.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "UserRepository",
+      "fieldName" : "userRepository",
+      "injectionType" : "AUTOWIRED",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    } ]
+  }, {
+    "id" : "0c1e103c-fe82-42ff-9691-ee4d7494fded",
+    "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+    "packageName" : "com.example.user.service",
+    "className" : "UserFacadeService",
+    "qualifiedName" : "com.example.user.service.UserFacadeService",
+    "type" : "SERVICE",
+    "annotations" : [ "@@Service" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/user-service/src/main/java/com/example/user/service/UserFacadeService.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "com.example.product.api.ProductService",
+      "fieldName" : "productService",
+      "injectionType" : "DUBBO_REFERENCE",
+      "scope" : "RPC",
+      "targetService" : null,
+      "interfaceName" : "com.example.product.api.ProductService"
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "com.example.order.api.OrderService",
+      "fieldName" : "orderService",
+      "injectionType" : "DUBBO_REFERENCE",
+      "scope" : "RPC",
+      "targetService" : null,
+      "interfaceName" : "com.example.order.api.OrderService"
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "com.example.product.api.RecommendationService",
+      "fieldName" : "recommendationService",
+      "injectionType" : "DUBBO_REFERENCE",
+      "scope" : "RPC",
+      "targetService" : null,
+      "interfaceName" : "com.example.product.api.RecommendationService"
+    } ]
+  }, {
+    "id" : "8e8f5129-d4e1-45a2-aea6-49db3ae8c450",
+    "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+    "packageName" : "com.example.user.provider",
+    "className" : "UserInfoServiceImpl",
+    "qualifiedName" : "com.example.user.provider.UserInfoServiceImpl",
+    "type" : "DUBBO_SERVICE",
+    "annotations" : [ "@@DubboService(version = \"1.0.0\", group = \"ecommerce\")" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/user-service/src/main/java/com/example/user/provider/UserInfoServiceImpl.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "UserRepository",
+      "fieldName" : "userRepository",
+      "injectionType" : "AUTOWIRED",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    } ]
+  }, {
+    "id" : "ec1cd0d0-5e37-41a3-9337-b5e7357a4232",
+    "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+    "packageName" : "com.example.user.model",
+    "className" : "User",
+    "qualifiedName" : "com.example.user.model.User",
+    "type" : "PLAIN_CLASS",
+    "annotations" : [ ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/user-service/src/main/java/com/example/user/model/User.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "Long",
+      "fieldName" : "id",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "name",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "email",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "phone",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "level",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    } ]
+  }, {
+    "id" : "be5ce11c-82c8-41d8-8277-3fab153b4257",
+    "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+    "packageName" : "com.example.user.repository",
+    "className" : "UserRepository",
+    "qualifiedName" : "com.example.user.repository.UserRepository",
+    "type" : "REPOSITORY",
+    "annotations" : [ "@@Repository" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/user-service/src/main/java/com/example/user/repository/UserRepository.java",
+    "dependencies" : [ ]
+  }, {
+    "id" : "bd8d4f37-bcc3-4fa4-9d4d-1a9055daa92b",
+    "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+    "packageName" : "com.example.user.controller",
+    "className" : "UserController",
+    "qualifiedName" : "com.example.user.controller.UserController",
+    "type" : "CONTROLLER",
+    "annotations" : [ "@@RestController", "@@RequestMapping(\"/api/users\")" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/user-service/src/main/java/com/example/user/controller/UserController.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "UserService",
+      "fieldName" : "userService",
+      "injectionType" : "AUTOWIRED",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "UserFacadeService",
+      "fieldName" : "userFacadeService",
+      "injectionType" : "AUTOWIRED",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    } ]
+  }, {
+    "id" : "7e27eed3-5023-43a5-8a73-e6439ade0e4e",
+    "serviceId" : "c8ee012f-f71b-4ded-8f7a-547ed5cf8566",
+    "packageName" : "com.example.notification.api",
+    "className" : "NotificationService",
+    "qualifiedName" : "com.example.notification.api.NotificationService",
+    "type" : "INTERFACE",
+    "annotations" : [ ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/notification-service/src/main/java/com/example/notification/api/NotificationService.java",
+    "dependencies" : [ ]
+  }, {
+    "id" : "9f2b3879-1bba-4d44-84da-a63c32e04127",
+    "serviceId" : "c8ee012f-f71b-4ded-8f7a-547ed5cf8566",
+    "packageName" : "com.example.notification.service",
+    "className" : "EmailService",
+    "qualifiedName" : "com.example.notification.service.EmailService",
+    "type" : "SERVICE",
+    "annotations" : [ "@@Service" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/notification-service/src/main/java/com/example/notification/service/EmailService.java",
+    "dependencies" : [ ]
+  }, {
+    "id" : "5d546782-7e90-42da-8f1f-9f9188a2cf82",
+    "serviceId" : "c8ee012f-f71b-4ded-8f7a-547ed5cf8566",
+    "packageName" : "com.example.notification.service",
+    "className" : "SmsService",
+    "qualifiedName" : "com.example.notification.service.SmsService",
+    "type" : "SERVICE",
+    "annotations" : [ "@@Service" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/notification-service/src/main/java/com/example/notification/service/SmsService.java",
+    "dependencies" : [ ]
+  }, {
+    "id" : "2c2cad62-b803-45ef-a172-b7ab4a442bc4",
+    "serviceId" : "c8ee012f-f71b-4ded-8f7a-547ed5cf8566",
+    "packageName" : "com.example.notification.service",
+    "className" : "NotificationServiceImpl",
+    "qualifiedName" : "com.example.notification.service.NotificationServiceImpl",
+    "type" : "DUBBO_SERVICE",
+    "annotations" : [ "@@DubboService(version = \"1.0.0\", group = \"ecommerce\")" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/notification-service/src/main/java/com/example/notification/service/NotificationServiceImpl.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "NotificationRepository",
+      "fieldName" : "notificationRepository",
+      "injectionType" : "AUTOWIRED",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "EmailService",
+      "fieldName" : "emailService",
+      "injectionType" : "AUTOWIRED",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "SmsService",
+      "fieldName" : "smsService",
+      "injectionType" : "AUTOWIRED",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "com.example.user.api.UserInfoService",
+      "fieldName" : "userInfoService",
+      "injectionType" : "DUBBO_REFERENCE",
+      "scope" : "RPC",
+      "targetService" : null,
+      "interfaceName" : "com.example.user.api.UserInfoService"
+    } ]
+  }, {
+    "id" : "fc824a43-3523-4732-ad3e-84e808249283",
+    "serviceId" : "c8ee012f-f71b-4ded-8f7a-547ed5cf8566",
+    "packageName" : "com.example.notification.model",
+    "className" : "Notification",
+    "qualifiedName" : "com.example.notification.model.Notification",
+    "type" : "PLAIN_CLASS",
+    "annotations" : [ ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/notification-service/src/main/java/com/example/notification/model/Notification.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "id",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "Long",
+      "fieldName" : "userId",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "type",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "content",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "status",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    } ]
+  }, {
+    "id" : "b8baccef-1af7-4afb-82cf-24c14be493d8",
+    "serviceId" : "c8ee012f-f71b-4ded-8f7a-547ed5cf8566",
+    "packageName" : "com.example.notification.repository",
+    "className" : "NotificationRepository",
+    "qualifiedName" : "com.example.notification.repository.NotificationRepository",
+    "type" : "REPOSITORY",
+    "annotations" : [ "@@Repository" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/notification-service/src/main/java/com/example/notification/repository/NotificationRepository.java",
+    "dependencies" : [ ]
+  }, {
+    "id" : "9bd287b2-e350-415e-93cf-9a8511ac4624",
+    "serviceId" : "60a4e5f0-4651-4149-b4f8-30c694477796",
+    "packageName" : "com.example.payment.api",
+    "className" : "PaymentService",
+    "qualifiedName" : "com.example.payment.api.PaymentService",
+    "type" : "INTERFACE",
+    "annotations" : [ ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/payment-service/src/main/java/com/example/payment/api/PaymentService.java",
+    "dependencies" : [ ]
+  }, {
+    "id" : "76507a9e-3b08-42d5-b1c2-35e637a12ca2",
+    "serviceId" : "60a4e5f0-4651-4149-b4f8-30c694477796",
+    "packageName" : "com.example.payment.service",
+    "className" : "PaymentServiceImpl",
+    "qualifiedName" : "com.example.payment.service.PaymentServiceImpl",
+    "type" : "DUBBO_SERVICE",
+    "annotations" : [ "@@DubboService(version = \"1.0.0\", group = \"ecommerce\")" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/payment-service/src/main/java/com/example/payment/service/PaymentServiceImpl.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "PaymentRepository",
+      "fieldName" : "paymentRepository",
+      "injectionType" : "AUTOWIRED",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "com.example.notification.api.NotificationService",
+      "fieldName" : "notificationService",
+      "injectionType" : "DUBBO_REFERENCE",
+      "scope" : "RPC",
+      "targetService" : null,
+      "interfaceName" : "com.example.notification.api.NotificationService"
+    } ]
+  }, {
+    "id" : "048bc1cb-8c7b-4044-8781-50e18654b3df",
+    "serviceId" : "60a4e5f0-4651-4149-b4f8-30c694477796",
+    "packageName" : "com.example.payment.model",
+    "className" : "Payment",
+    "qualifiedName" : "com.example.payment.model.Payment",
+    "type" : "PLAIN_CLASS",
+    "annotations" : [ ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/payment-service/src/main/java/com/example/payment/model/Payment.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "id",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "orderId",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "Double",
+      "fieldName" : "amount",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "status",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    } ]
+  }, {
+    "id" : "75aa5fdc-dc14-4c97-a179-dd7b38272412",
+    "serviceId" : "60a4e5f0-4651-4149-b4f8-30c694477796",
+    "packageName" : "com.example.payment.repository",
+    "className" : "PaymentRepository",
+    "qualifiedName" : "com.example.payment.repository.PaymentRepository",
+    "type" : "REPOSITORY",
+    "annotations" : [ "@@Repository" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/payment-service/src/main/java/com/example/payment/repository/PaymentRepository.java",
+    "dependencies" : [ ]
+  }, {
+    "id" : "70a7d23e-86f4-4e1b-8f80-6be853c4211d",
+    "serviceId" : "5fd009a6-5117-4d21-9c19-56110c825af7",
+    "packageName" : "com.example.order.api",
+    "className" : "OrderService",
+    "qualifiedName" : "com.example.order.api.OrderService",
+    "type" : "INTERFACE",
+    "annotations" : [ ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/order-service/src/main/java/com/example/order/api/OrderService.java",
+    "dependencies" : [ ]
+  }, {
+    "id" : "92820d97-8ec0-4926-be04-c8f1618a56ca",
+    "serviceId" : "5fd009a6-5117-4d21-9c19-56110c825af7",
+    "packageName" : "com.example.order.service",
+    "className" : "OrderServiceImpl",
+    "qualifiedName" : "com.example.order.service.OrderServiceImpl",
+    "type" : "DUBBO_SERVICE",
+    "annotations" : [ "@@DubboService(version = \"1.0.0\", group = \"ecommerce\")" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/order-service/src/main/java/com/example/order/service/OrderServiceImpl.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "OrderRepository",
+      "fieldName" : "orderRepository",
+      "injectionType" : "AUTOWIRED",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "com.example.user.api.UserInfoService",
+      "fieldName" : "userInfoService",
+      "injectionType" : "DUBBO_REFERENCE",
+      "scope" : "RPC",
+      "targetService" : null,
+      "interfaceName" : "com.example.user.api.UserInfoService"
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "com.example.product.api.ProductService",
+      "fieldName" : "productService",
+      "injectionType" : "DUBBO_REFERENCE",
+      "scope" : "RPC",
+      "targetService" : null,
+      "interfaceName" : "com.example.product.api.ProductService"
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "com.example.payment.api.PaymentService",
+      "fieldName" : "paymentService",
+      "injectionType" : "DUBBO_REFERENCE",
+      "scope" : "RPC",
+      "targetService" : null,
+      "interfaceName" : "com.example.payment.api.PaymentService"
+    } ]
+  }, {
+    "id" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "serviceId" : "5fd009a6-5117-4d21-9c19-56110c825af7",
+    "packageName" : "com.example.order.model",
+    "className" : "Order",
+    "qualifiedName" : "com.example.order.model.Order",
+    "type" : "PLAIN_CLASS",
+    "annotations" : [ ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/order-service/src/main/java/com/example/order/model/Order.java",
+    "dependencies" : [ {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "id",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "Long",
+      "fieldName" : "userId",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "String",
+      "fieldName" : "productId",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "Integer",
+      "fieldName" : "quantity",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    }, {
+      "targetClassId" : null,
+      "targetQualifiedName" : "Double",
+      "fieldName" : "totalAmount",
+      "injectionType" : "CONSTRUCTOR",
+      "scope" : "INTERNAL",
+      "targetService" : null,
+      "interfaceName" : null
+    } ]
+  }, {
+    "id" : "da64a0d1-abc2-423a-89a9-f1a49819bd17",
+    "serviceId" : "5fd009a6-5117-4d21-9c19-56110c825af7",
+    "packageName" : "com.example.order.repository",
+    "className" : "OrderRepository",
+    "qualifiedName" : "com.example.order.repository.OrderRepository",
+    "type" : "REPOSITORY",
+    "annotations" : [ "@@Repository" ],
+    "filePath" : "/home/ubuntu/workspace/call-chain-analyzer/./test-project-complex/order-service/src/main/java/com/example/order/repository/OrderRepository.java",
+    "dependencies" : [ ]
+  } ],
+  "methods" : [ {
+    "id" : "9c4e5107-b284-4b82-a7e8-7125bf3c86d6",
+    "classId" : "ce010305-c748-4512-b16b-62bcc8cb31c8",
+    "methodName" : "checkInventory",
+    "signature" : "boolean checkInventory(String, Integer)",
+    "returnType" : "boolean",
+    "parameters" : [ {
+      "name" : "productId",
+      "type" : "String",
+      "index" : 0
+    }, {
+      "name" : "quantity",
+      "type" : "Integer",
+      "index" : 1
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 13,
+    "lineEnd" : 13
+  }, {
+    "id" : "ba049d27-a051-4bd4-810f-5457a37f43ac",
+    "classId" : "ce010305-c748-4512-b16b-62bcc8cb31c8",
+    "methodName" : "getProductInfo",
+    "signature" : "Product getProductInfo(String)",
+    "returnType" : "Product",
+    "parameters" : [ {
+      "name" : "productId",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 18,
+    "lineEnd" : 18
+  }, {
+    "id" : "c0f10bcf-5f4c-4643-97a3-1be07c00cfeb",
+    "classId" : "ce010305-c748-4512-b16b-62bcc8cb31c8",
+    "methodName" : "decreaseInventory",
+    "signature" : "boolean decreaseInventory(String, Integer)",
+    "returnType" : "boolean",
+    "parameters" : [ {
+      "name" : "productId",
+      "type" : "String",
+      "index" : 0
+    }, {
+      "name" : "quantity",
+      "type" : "Integer",
+      "index" : 1
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 23,
+    "lineEnd" : 23
+  }, {
+    "id" : "7f887118-2706-4061-bded-a9645a3b48b2",
+    "classId" : "1963f9d2-717a-421f-9d27-45fa6c4d372f",
+    "methodName" : "recommend",
+    "signature" : "List<Product> recommend(Long, List<String>)",
+    "returnType" : "List<Product>",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    }, {
+      "name" : "orderHistory",
+      "type" : "List<String>",
+      "index" : 1
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 18,
+    "lineEnd" : 18
+  }, {
+    "id" : "6e7b83b8-0054-428c-b61b-adca94056ef4",
+    "classId" : "f5c5f4ce-4a90-46ce-8530-c93dd8fb448f",
+    "methodName" : "checkStock",
+    "signature" : "boolean checkStock(String, Integer)",
+    "returnType" : "boolean",
+    "parameters" : [ {
+      "name" : "productId",
+      "type" : "String",
+      "index" : 0
+    }, {
+      "name" : "quantity",
+      "type" : "Integer",
+      "index" : 1
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 17,
+    "lineEnd" : 23
+  }, {
+    "id" : "d357e7e7-2d38-423d-8009-518161bee2d0",
+    "classId" : "f5c5f4ce-4a90-46ce-8530-c93dd8fb448f",
+    "methodName" : "decrease",
+    "signature" : "Inventory decrease(String, Integer)",
+    "returnType" : "Inventory",
+    "parameters" : [ {
+      "name" : "productId",
+      "type" : "String",
+      "index" : 0
+    }, {
+      "name" : "quantity",
+      "type" : "Integer",
+      "index" : 1
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 25,
+    "lineEnd" : 32
+  }, {
+    "id" : "141c59d0-1dee-4602-ac12-4be31cb177a7",
+    "classId" : "f5c5f4ce-4a90-46ce-8530-c93dd8fb448f",
+    "methodName" : "filterInStock",
+    "signature" : "List<Inventory> filterInStock(List<String>)",
+    "returnType" : "List<Inventory>",
+    "parameters" : [ {
+      "name" : "productIds",
+      "type" : "List<String>",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 34,
+    "lineEnd" : 36
+  }, {
+    "id" : "97ce8df1-2f41-4e54-88ff-6a8e275976aa",
+    "classId" : "d2178815-48c4-4407-92f5-43f0c9808e21",
+    "methodName" : "recommend",
+    "signature" : "List<Product> recommend(Long, List<String>)",
+    "returnType" : "List<Product>",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    }, {
+      "name" : "orderHistory",
+      "type" : "List<String>",
+      "index" : 1
+    } ],
+    "annotations" : [ "@@Override" ],
+    "lineStart" : 22,
+    "lineEnd" : 53
+  }, {
+    "id" : "e6b9ba39-5adf-4c57-b387-7170efce17cb",
+    "classId" : "7c492bef-842d-4394-b4f2-785d9f736840",
+    "methodName" : "checkInventory",
+    "signature" : "boolean checkInventory(String, Integer)",
+    "returnType" : "boolean",
+    "parameters" : [ {
+      "name" : "productId",
+      "type" : "String",
+      "index" : 0
+    }, {
+      "name" : "quantity",
+      "type" : "Integer",
+      "index" : 1
+    } ],
+    "annotations" : [ "@@Override" ],
+    "lineStart" : 19,
+    "lineEnd" : 22
+  }, {
+    "id" : "9cab8253-308d-4d3c-848f-fc0870980284",
+    "classId" : "7c492bef-842d-4394-b4f2-785d9f736840",
+    "methodName" : "getProductInfo",
+    "signature" : "Product getProductInfo(String)",
+    "returnType" : "Product",
+    "parameters" : [ {
+      "name" : "productId",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ "@@Override" ],
+    "lineStart" : 24,
+    "lineEnd" : 27
+  }, {
+    "id" : "c3e9e1c0-aaf7-4889-97b1-001fc7ecfb36",
+    "classId" : "7c492bef-842d-4394-b4f2-785d9f736840",
+    "methodName" : "decreaseInventory",
+    "signature" : "boolean decreaseInventory(String, Integer)",
+    "returnType" : "boolean",
+    "parameters" : [ {
+      "name" : "productId",
+      "type" : "String",
+      "index" : 0
+    }, {
+      "name" : "quantity",
+      "type" : "Integer",
+      "index" : 1
+    } ],
+    "annotations" : [ "@@Override" ],
+    "lineStart" : 29,
+    "lineEnd" : 33
+  }, {
+    "id" : "774d0e30-a437-4b0a-8f2e-29b80b40ef0d",
+    "classId" : "7bbab71f-4797-4b17-9174-23bb3afaf29e",
+    "methodName" : "getProductId",
+    "signature" : "String getProductId()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 19,
+    "lineEnd" : 21
+  }, {
+    "id" : "6eac6308-6cfc-4bc6-8f63-159d3fd61a2d",
+    "classId" : "7bbab71f-4797-4b17-9174-23bb3afaf29e",
+    "methodName" : "setProductId",
+    "signature" : "void setProductId(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "productId",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 23,
+    "lineEnd" : 25
+  }, {
+    "id" : "19311a0c-92e9-4af8-8877-c7c026cb2b10",
+    "classId" : "7bbab71f-4797-4b17-9174-23bb3afaf29e",
+    "methodName" : "getStock",
+    "signature" : "Integer getStock()",
+    "returnType" : "Integer",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 27,
+    "lineEnd" : 29
+  }, {
+    "id" : "718ae501-03a2-4da9-828b-604b19eeecb1",
+    "classId" : "7bbab71f-4797-4b17-9174-23bb3afaf29e",
+    "methodName" : "setStock",
+    "signature" : "void setStock(Integer)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "stock",
+      "type" : "Integer",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 31,
+    "lineEnd" : 34
+  }, {
+    "id" : "dd590576-5681-44a0-8985-93af98b39c28",
+    "classId" : "7bbab71f-4797-4b17-9174-23bb3afaf29e",
+    "methodName" : "getReserved",
+    "signature" : "Integer getReserved()",
+    "returnType" : "Integer",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 36,
+    "lineEnd" : 38
+  }, {
+    "id" : "5b643620-c09d-4d42-bb43-2c8f1a00a373",
+    "classId" : "7bbab71f-4797-4b17-9174-23bb3afaf29e",
+    "methodName" : "setReserved",
+    "signature" : "void setReserved(Integer)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "reserved",
+      "type" : "Integer",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 40,
+    "lineEnd" : 43
+  }, {
+    "id" : "0432c27c-31aa-434f-a2e7-5d3f4f1a01ae",
+    "classId" : "7bbab71f-4797-4b17-9174-23bb3afaf29e",
+    "methodName" : "getAvailable",
+    "signature" : "Integer getAvailable()",
+    "returnType" : "Integer",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 45,
+    "lineEnd" : 47
+  }, {
+    "id" : "9a40655a-706f-439c-9bdd-640f51531fc9",
+    "classId" : "0eba09d8-a52f-40ff-8e77-9cc88edbab3d",
+    "methodName" : "getId",
+    "signature" : "String getId()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 20,
+    "lineEnd" : 22
+  }, {
+    "id" : "c033cda7-a449-4bb6-bc18-79caed4b3076",
+    "classId" : "0eba09d8-a52f-40ff-8e77-9cc88edbab3d",
+    "methodName" : "setId",
+    "signature" : "void setId(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 24,
+    "lineEnd" : 26
+  }, {
+    "id" : "c3f576a2-787c-4348-991c-2a9411364808",
+    "classId" : "0eba09d8-a52f-40ff-8e77-9cc88edbab3d",
+    "methodName" : "getName",
+    "signature" : "String getName()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 28,
+    "lineEnd" : 30
+  }, {
+    "id" : "7d98b45d-c99d-44ea-ae46-0907c434bfe5",
+    "classId" : "0eba09d8-a52f-40ff-8e77-9cc88edbab3d",
+    "methodName" : "setName",
+    "signature" : "void setName(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "name",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 32,
+    "lineEnd" : 34
+  }, {
+    "id" : "de3ffa1c-fa2c-47aa-9854-7c6c13cb8359",
+    "classId" : "0eba09d8-a52f-40ff-8e77-9cc88edbab3d",
+    "methodName" : "getCategory",
+    "signature" : "String getCategory()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 36,
+    "lineEnd" : 38
+  }, {
+    "id" : "39edea30-68ea-43a8-a8e6-e5e68153f8e5",
+    "classId" : "0eba09d8-a52f-40ff-8e77-9cc88edbab3d",
+    "methodName" : "setCategory",
+    "signature" : "void setCategory(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "category",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 40,
+    "lineEnd" : 42
+  }, {
+    "id" : "83f3727b-2b35-4df8-8d54-7147da012982",
+    "classId" : "0eba09d8-a52f-40ff-8e77-9cc88edbab3d",
+    "methodName" : "getPrice",
+    "signature" : "Double getPrice()",
+    "returnType" : "Double",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 44,
+    "lineEnd" : 46
+  }, {
+    "id" : "d9afaa5a-523d-4e5c-91f7-2090f8670406",
+    "classId" : "0eba09d8-a52f-40ff-8e77-9cc88edbab3d",
+    "methodName" : "setPrice",
+    "signature" : "void setPrice(Double)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "price",
+      "type" : "Double",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 48,
+    "lineEnd" : 50
+  }, {
+    "id" : "1219263b-491c-415b-9435-16b42ffdfafe",
+    "classId" : "0eba09d8-a52f-40ff-8e77-9cc88edbab3d",
+    "methodName" : "getDescription",
+    "signature" : "String getDescription()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 52,
+    "lineEnd" : 54
+  }, {
+    "id" : "64a8535b-42b4-4031-a3fc-f7404a49dc2e",
+    "classId" : "0eba09d8-a52f-40ff-8e77-9cc88edbab3d",
+    "methodName" : "setDescription",
+    "signature" : "void setDescription(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "description",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 56,
+    "lineEnd" : 58
+  }, {
+    "id" : "7f0687ae-3155-4657-b370-4fc6e79076b1",
+    "classId" : "e9f1095d-31d1-4608-8c56-b688d4485378",
+    "methodName" : "findByProductId",
+    "signature" : "Inventory findByProductId(String)",
+    "returnType" : "Inventory",
+    "parameters" : [ {
+      "name" : "productId",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 24,
+    "lineEnd" : 26
+  }, {
+    "id" : "2ada7879-e29e-4fef-8115-aee388c82c02",
+    "classId" : "e9f1095d-31d1-4608-8c56-b688d4485378",
+    "methodName" : "findInStock",
+    "signature" : "List<Inventory> findInStock(List<String>)",
+    "returnType" : "List<Inventory>",
+    "parameters" : [ {
+      "name" : "productIds",
+      "type" : "List<String>",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 28,
+    "lineEnd" : 37
+  }, {
+    "id" : "e19f8c5f-88c1-4fb5-990d-8b2de81e5440",
+    "classId" : "e9f1095d-31d1-4608-8c56-b688d4485378",
+    "methodName" : "update",
+    "signature" : "Inventory update(String, Integer)",
+    "returnType" : "Inventory",
+    "parameters" : [ {
+      "name" : "productId",
+      "type" : "String",
+      "index" : 0
+    }, {
+      "name" : "newStock",
+      "type" : "Integer",
+      "index" : 1
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 39,
+    "lineEnd" : 45
+  }, {
+    "id" : "aef61720-21dc-48fe-8d62-32236806ec25",
+    "classId" : "ea92efb9-64be-4920-8a78-fba7bed1bc13",
+    "methodName" : "findById",
+    "signature" : "Product findById(String)",
+    "returnType" : "Product",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 24,
+    "lineEnd" : 26
+  }, {
+    "id" : "c5996ea5-2d87-405b-ae15-31e1904b4cf5",
+    "classId" : "ea92efb9-64be-4920-8a78-fba7bed1bc13",
+    "methodName" : "findByCategory",
+    "signature" : "List<Product> findByCategory(String)",
+    "returnType" : "List<Product>",
+    "parameters" : [ {
+      "name" : "category",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 28,
+    "lineEnd" : 36
+  }, {
+    "id" : "5b689e59-aa75-40f0-8875-4d7f30ad99d6",
+    "classId" : "ea92efb9-64be-4920-8a78-fba7bed1bc13",
+    "methodName" : "findAll",
+    "signature" : "List<Product> findAll()",
+    "returnType" : "List<Product>",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 38,
+    "lineEnd" : 40
+  }, {
+    "id" : "a688edec-ed74-4888-b0ff-fb2ec507ae95",
+    "classId" : "98c75cb5-d6ac-4bf2-af13-1218290b0102",
+    "methodName" : "getUserInfo",
+    "signature" : "User getUserInfo(Long)",
+    "returnType" : "User",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 14,
+    "lineEnd" : 14
+  }, {
+    "id" : "904fb4fd-de12-4117-a122-ca08d1c42419",
+    "classId" : "98c75cb5-d6ac-4bf2-af13-1218290b0102",
+    "methodName" : "getUserContacts",
+    "signature" : "User getUserContacts(Long)",
+    "returnType" : "User",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 19,
+    "lineEnd" : 19
+  }, {
+    "id" : "45ae6543-22fb-479b-a32b-1de94e1ee262",
+    "classId" : "9b532363-a55d-44e1-b836-5c338fdbb31f",
+    "methodName" : "getUserWithOrders",
+    "signature" : "User getUserWithOrders(Long)",
+    "returnType" : "User",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 17,
+    "lineEnd" : 24
+  }, {
+    "id" : "7209c4a8-ec79-44b3-b36b-da509e3921ed",
+    "classId" : "0c1e103c-fe82-42ff-9691-ee4d7494fded",
+    "methodName" : "placeOrder",
+    "signature" : "String placeOrder(Long, String, Integer, String)",
+    "returnType" : "String",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    }, {
+      "name" : "productId",
+      "type" : "String",
+      "index" : 1
+    }, {
+      "name" : "quantity",
+      "type" : "Integer",
+      "index" : 2
+    }, {
+      "name" : "address",
+      "type" : "String",
+      "index" : 3
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 21,
+    "lineEnd" : 35
+  }, {
+    "id" : "1af58f4e-fcfc-4b68-a1ea-23bcd02717da",
+    "classId" : "0c1e103c-fe82-42ff-9691-ee4d7494fded",
+    "methodName" : "getRecommendations",
+    "signature" : "List<com.example.product.model.Product> getRecommendations(Long)",
+    "returnType" : "List<com.example.product.model.Product>",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 37,
+    "lineEnd" : 43
+  }, {
+    "id" : "ccf385a8-b9ca-45fc-a614-cec7b4f26ac8",
+    "classId" : "8e8f5129-d4e1-45a2-aea6-49db3ae8c450",
+    "methodName" : "getUserInfo",
+    "signature" : "User getUserInfo(Long)",
+    "returnType" : "User",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ "@@Override" ],
+    "lineStart" : 15,
+    "lineEnd" : 18
+  }, {
+    "id" : "79d5572e-d1b9-4674-a686-939262207e55",
+    "classId" : "8e8f5129-d4e1-45a2-aea6-49db3ae8c450",
+    "methodName" : "getUserContacts",
+    "signature" : "User getUserContacts(Long)",
+    "returnType" : "User",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ "@@Override" ],
+    "lineStart" : 20,
+    "lineEnd" : 24
+  }, {
+    "id" : "738793f6-e159-484f-a517-7d8df217e4f8",
+    "classId" : "ec1cd0d0-5e37-41a3-9337-b5e7357a4232",
+    "methodName" : "getId",
+    "signature" : "Long getId()",
+    "returnType" : "Long",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 22,
+    "lineEnd" : 24
+  }, {
+    "id" : "5e9480b4-a267-4f05-9b64-8b5a8fb7306a",
+    "classId" : "ec1cd0d0-5e37-41a3-9337-b5e7357a4232",
+    "methodName" : "setId",
+    "signature" : "void setId(Long)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 26,
+    "lineEnd" : 28
+  }, {
+    "id" : "9a5577e9-4b87-4edf-a997-be7c835e37bb",
+    "classId" : "ec1cd0d0-5e37-41a3-9337-b5e7357a4232",
+    "methodName" : "getName",
+    "signature" : "String getName()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 30,
+    "lineEnd" : 32
+  }, {
+    "id" : "f66e1114-edb1-480a-946d-d3b6f57a83c6",
+    "classId" : "ec1cd0d0-5e37-41a3-9337-b5e7357a4232",
+    "methodName" : "setName",
+    "signature" : "void setName(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "name",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 34,
+    "lineEnd" : 36
+  }, {
+    "id" : "d635dfa8-0102-43de-82ad-febdd02de334",
+    "classId" : "ec1cd0d0-5e37-41a3-9337-b5e7357a4232",
+    "methodName" : "getEmail",
+    "signature" : "String getEmail()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 38,
+    "lineEnd" : 40
+  }, {
+    "id" : "1796721f-bc72-4ad9-a703-adc53a90384b",
+    "classId" : "ec1cd0d0-5e37-41a3-9337-b5e7357a4232",
+    "methodName" : "setEmail",
+    "signature" : "void setEmail(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "email",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 42,
+    "lineEnd" : 44
+  }, {
+    "id" : "31658c8b-43cb-421b-8a7c-02c5dd6a3c72",
+    "classId" : "ec1cd0d0-5e37-41a3-9337-b5e7357a4232",
+    "methodName" : "getPhone",
+    "signature" : "String getPhone()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 46,
+    "lineEnd" : 48
+  }, {
+    "id" : "1f2f1207-fdee-41da-a36b-5e2e72b840a1",
+    "classId" : "ec1cd0d0-5e37-41a3-9337-b5e7357a4232",
+    "methodName" : "setPhone",
+    "signature" : "void setPhone(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "phone",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 50,
+    "lineEnd" : 52
+  }, {
+    "id" : "2aa0ff58-8588-4d9e-8389-7c7e7b9e54cc",
+    "classId" : "ec1cd0d0-5e37-41a3-9337-b5e7357a4232",
+    "methodName" : "getLevel",
+    "signature" : "String getLevel()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 54,
+    "lineEnd" : 56
+  }, {
+    "id" : "681d3116-da46-4dba-80f9-0f95bcb2ecf7",
+    "classId" : "ec1cd0d0-5e37-41a3-9337-b5e7357a4232",
+    "methodName" : "setLevel",
+    "signature" : "void setLevel(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "level",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 58,
+    "lineEnd" : 60
+  }, {
+    "id" : "78687ad6-88b6-4b77-9ecb-54062949835e",
+    "classId" : "ec1cd0d0-5e37-41a3-9337-b5e7357a4232",
+    "methodName" : "getAddress",
+    "signature" : "String getAddress()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 62,
+    "lineEnd" : 64
+  }, {
+    "id" : "b163523e-feb7-46fd-bc63-add77b6f4741",
+    "classId" : "ec1cd0d0-5e37-41a3-9337-b5e7357a4232",
+    "methodName" : "setAddress",
+    "signature" : "void setAddress(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "address",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 66,
+    "lineEnd" : 68
+  }, {
+    "id" : "c6c985ff-875f-4013-a53f-953a809f3272",
+    "classId" : "be5ce11c-82c8-41d8-8277-3fab153b4257",
+    "methodName" : "findById",
+    "signature" : "User findById(Long)",
+    "returnType" : "User",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 20,
+    "lineEnd" : 22
+  }, {
+    "id" : "360a0545-9160-4a66-80aa-43784b352e36",
+    "classId" : "be5ce11c-82c8-41d8-8277-3fab153b4257",
+    "methodName" : "save",
+    "signature" : "User save(User)",
+    "returnType" : "User",
+    "parameters" : [ {
+      "name" : "user",
+      "type" : "User",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 24,
+    "lineEnd" : 27
+  }, {
+    "id" : "11561e34-6503-447e-bdb1-fc3a87cb8a2e",
+    "classId" : "bd8d4f37-bcc3-4fa4-9d4d-1a9055daa92b",
+    "methodName" : "getUser",
+    "signature" : "User getUser(Long)",
+    "returnType" : "User",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ "@@GetMapping(\"/{id}\")" ],
+    "lineStart" : 21,
+    "lineEnd" : 24
+  }, {
+    "id" : "ede497e9-b580-4bf7-b1dd-ec9a11dede16",
+    "classId" : "bd8d4f37-bcc3-4fa4-9d4d-1a9055daa92b",
+    "methodName" : "createOrder",
+    "signature" : "String createOrder(Long, String, Integer, String)",
+    "returnType" : "String",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    }, {
+      "name" : "productId",
+      "type" : "String",
+      "index" : 1
+    }, {
+      "name" : "quantity",
+      "type" : "Integer",
+      "index" : 2
+    }, {
+      "name" : "address",
+      "type" : "String",
+      "index" : 3
+    } ],
+    "annotations" : [ "@@PostMapping(\"/{userId}/orders\")" ],
+    "lineStart" : 26,
+    "lineEnd" : 33
+  }, {
+    "id" : "6e7b3b23-36b6-4214-8ae8-6fa2dc07526a",
+    "classId" : "bd8d4f37-bcc3-4fa4-9d4d-1a9055daa92b",
+    "methodName" : "getRecommendations",
+    "signature" : "List<com.example.product.model.Product> getRecommendations(Long)",
+    "returnType" : "List<com.example.product.model.Product>",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ "@@GetMapping(\"/{id}/recommendations\")" ],
+    "lineStart" : 35,
+    "lineEnd" : 38
+  }, {
+    "id" : "5f041aeb-8835-4647-a9ca-f823b6762dfd",
+    "classId" : "7e27eed3-5023-43a5-8a73-e6439ade0e4e",
+    "methodName" : "sendNotification",
+    "signature" : "String sendNotification(Long, String, String)",
+    "returnType" : "String",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    }, {
+      "name" : "type",
+      "type" : "String",
+      "index" : 1
+    }, {
+      "name" : "content",
+      "type" : "String",
+      "index" : 2
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 15,
+    "lineEnd" : 15
+  }, {
+    "id" : "cb821f0f-1363-443e-a49a-095825b44421",
+    "classId" : "9f2b3879-1bba-4d44-84da-a63c32e04127",
+    "methodName" : "send",
+    "signature" : "boolean send(String, String, String)",
+    "returnType" : "boolean",
+    "parameters" : [ {
+      "name" : "email",
+      "type" : "String",
+      "index" : 0
+    }, {
+      "name" : "subject",
+      "type" : "String",
+      "index" : 1
+    }, {
+      "name" : "content",
+      "type" : "String",
+      "index" : 2
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 8,
+    "lineEnd" : 14
+  }, {
+    "id" : "0a43f4d3-30c4-4b28-ad64-3758839b19c0",
+    "classId" : "5d546782-7e90-42da-8f1f-9f9188a2cf82",
+    "methodName" : "send",
+    "signature" : "boolean send(String, String)",
+    "returnType" : "boolean",
+    "parameters" : [ {
+      "name" : "phone",
+      "type" : "String",
+      "index" : 0
+    }, {
+      "name" : "content",
+      "type" : "String",
+      "index" : 1
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 8,
+    "lineEnd" : 13
+  }, {
+    "id" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+    "classId" : "2c2cad62-b803-45ef-a172-b7ab4a442bc4",
+    "methodName" : "sendNotification",
+    "signature" : "String sendNotification(Long, String, String)",
+    "returnType" : "String",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    }, {
+      "name" : "type",
+      "type" : "String",
+      "index" : 1
+    }, {
+      "name" : "content",
+      "type" : "String",
+      "index" : 2
+    } ],
+    "annotations" : [ "@@Override" ],
+    "lineStart" : 25,
+    "lineEnd" : 46
+  }, {
+    "id" : "c56e7281-5a2f-453c-a49c-67b543cb75b0",
+    "classId" : "fc824a43-3523-4732-ad3e-84e808249283",
+    "methodName" : "getId",
+    "signature" : "String getId()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 25,
+    "lineEnd" : 27
+  }, {
+    "id" : "7c870130-2fc7-4e1f-bdb2-678de120be6e",
+    "classId" : "fc824a43-3523-4732-ad3e-84e808249283",
+    "methodName" : "setId",
+    "signature" : "void setId(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 29,
+    "lineEnd" : 31
+  }, {
+    "id" : "a1f27b8a-29b5-4222-a615-330ac50c5e2a",
+    "classId" : "fc824a43-3523-4732-ad3e-84e808249283",
+    "methodName" : "getUserId",
+    "signature" : "Long getUserId()",
+    "returnType" : "Long",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 33,
+    "lineEnd" : 35
+  }, {
+    "id" : "0244d42b-03aa-4e40-abc7-304f98d7e02b",
+    "classId" : "fc824a43-3523-4732-ad3e-84e808249283",
+    "methodName" : "setUserId",
+    "signature" : "void setUserId(Long)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 37,
+    "lineEnd" : 39
+  }, {
+    "id" : "ab3239d1-4f59-488f-930e-c0d1822f1293",
+    "classId" : "fc824a43-3523-4732-ad3e-84e808249283",
+    "methodName" : "getType",
+    "signature" : "String getType()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 41,
+    "lineEnd" : 43
+  }, {
+    "id" : "fc5fd5c7-171b-40b8-a6d4-12b3a6a15a50",
+    "classId" : "fc824a43-3523-4732-ad3e-84e808249283",
+    "methodName" : "setType",
+    "signature" : "void setType(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "type",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 45,
+    "lineEnd" : 47
+  }, {
+    "id" : "da7aba3d-8eb9-489f-8950-a6e98d3f6f72",
+    "classId" : "fc824a43-3523-4732-ad3e-84e808249283",
+    "methodName" : "getContent",
+    "signature" : "String getContent()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 49,
+    "lineEnd" : 51
+  }, {
+    "id" : "e097f6b9-c969-495e-967e-2848282d16b9",
+    "classId" : "fc824a43-3523-4732-ad3e-84e808249283",
+    "methodName" : "setContent",
+    "signature" : "void setContent(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "content",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 53,
+    "lineEnd" : 55
+  }, {
+    "id" : "7051bc7b-2401-4f78-a839-a0ff585b09aa",
+    "classId" : "fc824a43-3523-4732-ad3e-84e808249283",
+    "methodName" : "getStatus",
+    "signature" : "String getStatus()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 57,
+    "lineEnd" : 59
+  }, {
+    "id" : "16e41540-3766-4da4-ace0-13f125ce2c51",
+    "classId" : "fc824a43-3523-4732-ad3e-84e808249283",
+    "methodName" : "setStatus",
+    "signature" : "void setStatus(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "status",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 61,
+    "lineEnd" : 63
+  }, {
+    "id" : "57f1df57-7c82-4639-9c13-5ea5de4285e6",
+    "classId" : "fc824a43-3523-4732-ad3e-84e808249283",
+    "methodName" : "getCreatedAt",
+    "signature" : "Date getCreatedAt()",
+    "returnType" : "Date",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 65,
+    "lineEnd" : 67
+  }, {
+    "id" : "2b950b76-724b-4462-bb98-824fd22de5ea",
+    "classId" : "fc824a43-3523-4732-ad3e-84e808249283",
+    "methodName" : "setCreatedAt",
+    "signature" : "void setCreatedAt(Date)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "createdAt",
+      "type" : "Date",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 69,
+    "lineEnd" : 71
+  }, {
+    "id" : "0245c5e9-265c-4bf6-a636-866212a23a65",
+    "classId" : "b8baccef-1af7-4afb-82cf-24c14be493d8",
+    "methodName" : "save",
+    "signature" : "Notification save(Notification)",
+    "returnType" : "Notification",
+    "parameters" : [ {
+      "name" : "notification",
+      "type" : "Notification",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 15,
+    "lineEnd" : 21
+  }, {
+    "id" : "4eb23ed4-9735-45cf-af55-a824cba7c1d4",
+    "classId" : "b8baccef-1af7-4afb-82cf-24c14be493d8",
+    "methodName" : "findById",
+    "signature" : "Notification findById(String)",
+    "returnType" : "Notification",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 23,
+    "lineEnd" : 25
+  }, {
+    "id" : "d1336110-b61e-47f7-8309-2f94af723390",
+    "classId" : "9bd287b2-e350-415e-93cf-9a8511ac4624",
+    "methodName" : "createPayment",
+    "signature" : "String createPayment(String, Double)",
+    "returnType" : "String",
+    "parameters" : [ {
+      "name" : "orderId",
+      "type" : "String",
+      "index" : 0
+    }, {
+      "name" : "amount",
+      "type" : "Double",
+      "index" : 1
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 14,
+    "lineEnd" : 14
+  }, {
+    "id" : "d77a7061-aaac-4af3-b2ce-564c6f24dbed",
+    "classId" : "9bd287b2-e350-415e-93cf-9a8511ac4624",
+    "methodName" : "getPaymentStatus",
+    "signature" : "String getPaymentStatus(String)",
+    "returnType" : "String",
+    "parameters" : [ {
+      "name" : "paymentId",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 21,
+    "lineEnd" : 21
+  }, {
+    "id" : "e8eec721-4d7e-4f04-b015-0b9a7e06ce2d",
+    "classId" : "76507a9e-3b08-42d5-b1c2-35e637a12ca2",
+    "methodName" : "createPayment",
+    "signature" : "String createPayment(String, Double)",
+    "returnType" : "String",
+    "parameters" : [ {
+      "name" : "orderId",
+      "type" : "String",
+      "index" : 0
+    }, {
+      "name" : "amount",
+      "type" : "Double",
+      "index" : 1
+    } ],
+    "annotations" : [ "@@Override" ],
+    "lineStart" : 19,
+    "lineEnd" : 37
+  }, {
+    "id" : "5bc21533-70b9-4a9f-973d-73eee8598a2c",
+    "classId" : "76507a9e-3b08-42d5-b1c2-35e637a12ca2",
+    "methodName" : "getPaymentStatus",
+    "signature" : "String getPaymentStatus(String)",
+    "returnType" : "String",
+    "parameters" : [ {
+      "name" : "paymentId",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ "@@Override" ],
+    "lineStart" : 39,
+    "lineEnd" : 43
+  }, {
+    "id" : "4e40ef73-f06f-4d57-93d6-cf272affb2b9",
+    "classId" : "76507a9e-3b08-42d5-b1c2-35e637a12ca2",
+    "methodName" : "extractUserIdFromOrder",
+    "signature" : "Long extractUserIdFromOrder(String)",
+    "returnType" : "Long",
+    "parameters" : [ {
+      "name" : "orderId",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 45,
+    "lineEnd" : 48
+  }, {
+    "id" : "7744fc0c-a66f-4141-be63-500b55c37007",
+    "classId" : "048bc1cb-8c7b-4044-8781-50e18654b3df",
+    "methodName" : "getId",
+    "signature" : "String getId()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 24,
+    "lineEnd" : 26
+  }, {
+    "id" : "786e6f62-e066-4e35-9890-b8a514e1b878",
+    "classId" : "048bc1cb-8c7b-4044-8781-50e18654b3df",
+    "methodName" : "setId",
+    "signature" : "void setId(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 28,
+    "lineEnd" : 30
+  }, {
+    "id" : "c1913bde-c52f-4669-b0cb-bcaa198d364d",
+    "classId" : "048bc1cb-8c7b-4044-8781-50e18654b3df",
+    "methodName" : "getOrderId",
+    "signature" : "String getOrderId()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 32,
+    "lineEnd" : 34
+  }, {
+    "id" : "b8bbce98-9d37-4f24-87cc-a43c137d2428",
+    "classId" : "048bc1cb-8c7b-4044-8781-50e18654b3df",
+    "methodName" : "setOrderId",
+    "signature" : "void setOrderId(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "orderId",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 36,
+    "lineEnd" : 38
+  }, {
+    "id" : "a3c31b64-6282-41e3-b9c2-2148d0078c32",
+    "classId" : "048bc1cb-8c7b-4044-8781-50e18654b3df",
+    "methodName" : "getAmount",
+    "signature" : "Double getAmount()",
+    "returnType" : "Double",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 40,
+    "lineEnd" : 42
+  }, {
+    "id" : "6ecd2891-c6bc-4e5f-b143-c980ced944fb",
+    "classId" : "048bc1cb-8c7b-4044-8781-50e18654b3df",
+    "methodName" : "setAmount",
+    "signature" : "void setAmount(Double)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "amount",
+      "type" : "Double",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 44,
+    "lineEnd" : 46
+  }, {
+    "id" : "0d120bd9-28b3-4475-ac14-b2be341eaba8",
+    "classId" : "048bc1cb-8c7b-4044-8781-50e18654b3df",
+    "methodName" : "getStatus",
+    "signature" : "String getStatus()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 48,
+    "lineEnd" : 50
+  }, {
+    "id" : "9bde7514-9174-42e3-b665-e30caf2f97e3",
+    "classId" : "048bc1cb-8c7b-4044-8781-50e18654b3df",
+    "methodName" : "setStatus",
+    "signature" : "void setStatus(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "status",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 52,
+    "lineEnd" : 54
+  }, {
+    "id" : "b2cf451c-39d4-4d4b-9548-04c3c59506a6",
+    "classId" : "048bc1cb-8c7b-4044-8781-50e18654b3df",
+    "methodName" : "getMethod",
+    "signature" : "String getMethod()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 56,
+    "lineEnd" : 58
+  }, {
+    "id" : "fbfb08af-9786-4380-be29-e439392ae75a",
+    "classId" : "048bc1cb-8c7b-4044-8781-50e18654b3df",
+    "methodName" : "setMethod",
+    "signature" : "void setMethod(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "method",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 60,
+    "lineEnd" : 62
+  }, {
+    "id" : "bf2299c6-9209-41aa-8958-e91f90167d6c",
+    "classId" : "048bc1cb-8c7b-4044-8781-50e18654b3df",
+    "methodName" : "getCreatedAt",
+    "signature" : "Date getCreatedAt()",
+    "returnType" : "Date",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 64,
+    "lineEnd" : 66
+  }, {
+    "id" : "bd6c9827-0a08-4f09-b15b-9d6074da881c",
+    "classId" : "048bc1cb-8c7b-4044-8781-50e18654b3df",
+    "methodName" : "setCreatedAt",
+    "signature" : "void setCreatedAt(Date)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "createdAt",
+      "type" : "Date",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 68,
+    "lineEnd" : 70
+  }, {
+    "id" : "73744de8-5c49-40ad-a110-89c10f762559",
+    "classId" : "75aa5fdc-dc14-4c97-a179-dd7b38272412",
+    "methodName" : "save",
+    "signature" : "Payment save(Payment)",
+    "returnType" : "Payment",
+    "parameters" : [ {
+      "name" : "payment",
+      "type" : "Payment",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 15,
+    "lineEnd" : 21
+  }, {
+    "id" : "eaf38d66-ed54-42cb-b0c8-9357d20a40aa",
+    "classId" : "75aa5fdc-dc14-4c97-a179-dd7b38272412",
+    "methodName" : "findById",
+    "signature" : "Payment findById(String)",
+    "returnType" : "Payment",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 23,
+    "lineEnd" : 25
+  }, {
+    "id" : "0bd34f80-2d80-40db-aeb1-91d1d0c26b8e",
+    "classId" : "75aa5fdc-dc14-4c97-a179-dd7b38272412",
+    "methodName" : "findByOrderId",
+    "signature" : "Payment findByOrderId(String)",
+    "returnType" : "Payment",
+    "parameters" : [ {
+      "name" : "orderId",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 27,
+    "lineEnd" : 34
+  }, {
+    "id" : "9d2541f3-20b6-4745-a163-ceb3b1db05db",
+    "classId" : "70a7d23e-86f4-4e1b-8f80-6be853c4211d",
+    "methodName" : "createOrder",
+    "signature" : "Order createOrder(Long, String, Integer, String)",
+    "returnType" : "Order",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    }, {
+      "name" : "productId",
+      "type" : "String",
+      "index" : 1
+    }, {
+      "name" : "quantity",
+      "type" : "Integer",
+      "index" : 2
+    }, {
+      "name" : "address",
+      "type" : "String",
+      "index" : 3
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 15,
+    "lineEnd" : 15
+  }, {
+    "id" : "5ba5792e-f520-4d3e-844c-f41a42dfc93d",
+    "classId" : "70a7d23e-86f4-4e1b-8f80-6be853c4211d",
+    "methodName" : "getOrdersByUserId",
+    "signature" : "List<Order> getOrdersByUserId(Long)",
+    "returnType" : "List<Order>",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 20,
+    "lineEnd" : 20
+  }, {
+    "id" : "abd1c5fc-6f8e-4db3-a19d-eec799e1c1f4",
+    "classId" : "70a7d23e-86f4-4e1b-8f80-6be853c4211d",
+    "methodName" : "getUserOrderHistory",
+    "signature" : "List<String> getUserOrderHistory(Long)",
+    "returnType" : "List<String>",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 25,
+    "lineEnd" : 25
+  }, {
+    "id" : "49d92616-fc69-4a05-a7de-44da63a40a43",
+    "classId" : "92820d97-8ec0-4926-be04-c8f1618a56ca",
+    "methodName" : "createOrder",
+    "signature" : "Order createOrder(Long, String, Integer, String)",
+    "returnType" : "Order",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    }, {
+      "name" : "productId",
+      "type" : "String",
+      "index" : 1
+    }, {
+      "name" : "quantity",
+      "type" : "Integer",
+      "index" : 2
+    }, {
+      "name" : "address",
+      "type" : "String",
+      "index" : 3
+    } ],
+    "annotations" : [ "@@Override" ],
+    "lineStart" : 28,
+    "lineEnd" : 58
+  }, {
+    "id" : "42eb1e33-2dbf-44d5-a294-e56acfd427da",
+    "classId" : "92820d97-8ec0-4926-be04-c8f1618a56ca",
+    "methodName" : "getOrdersByUserId",
+    "signature" : "List<Order> getOrdersByUserId(Long)",
+    "returnType" : "List<Order>",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ "@@Override" ],
+    "lineStart" : 60,
+    "lineEnd" : 63
+  }, {
+    "id" : "e7920d03-c5fa-439b-9f13-882ae5025f8d",
+    "classId" : "92820d97-8ec0-4926-be04-c8f1618a56ca",
+    "methodName" : "getUserOrderHistory",
+    "signature" : "List<String> getUserOrderHistory(Long)",
+    "returnType" : "List<String>",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ "@@Override" ],
+    "lineStart" : 65,
+    "lineEnd" : 81
+  }, {
+    "id" : "8f9c567a-cd71-4e87-8f65-f71479de35f2",
+    "classId" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "methodName" : "getId",
+    "signature" : "String getId()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 28,
+    "lineEnd" : 30
+  }, {
+    "id" : "30f4a68a-0de1-448d-bf4a-51ae6d539d30",
+    "classId" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "methodName" : "setId",
+    "signature" : "void setId(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 32,
+    "lineEnd" : 34
+  }, {
+    "id" : "c7b13bf4-c0e6-4660-a39c-69382d769f2f",
+    "classId" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "methodName" : "getUserId",
+    "signature" : "Long getUserId()",
+    "returnType" : "Long",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 36,
+    "lineEnd" : 38
+  }, {
+    "id" : "5ab10714-b7d0-47df-995c-4b22c829bfd3",
+    "classId" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "methodName" : "setUserId",
+    "signature" : "void setUserId(Long)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 40,
+    "lineEnd" : 42
+  }, {
+    "id" : "93977e70-fe4d-4efd-a870-02b0c2af6863",
+    "classId" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "methodName" : "getProductId",
+    "signature" : "String getProductId()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 44,
+    "lineEnd" : 46
+  }, {
+    "id" : "ee19b9a6-76ed-4c8b-8f6b-1eb4b1eaeba4",
+    "classId" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "methodName" : "setProductId",
+    "signature" : "void setProductId(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "productId",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 48,
+    "lineEnd" : 50
+  }, {
+    "id" : "21d5702c-3bcf-4956-a00d-e58cc0dad33d",
+    "classId" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "methodName" : "getQuantity",
+    "signature" : "Integer getQuantity()",
+    "returnType" : "Integer",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 52,
+    "lineEnd" : 54
+  }, {
+    "id" : "7cdfde70-e58b-458e-8eb4-48a81da6173e",
+    "classId" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "methodName" : "setQuantity",
+    "signature" : "void setQuantity(Integer)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "quantity",
+      "type" : "Integer",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 56,
+    "lineEnd" : 58
+  }, {
+    "id" : "08c586ce-8c4a-4d0e-be7b-1021f44ce9f1",
+    "classId" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "methodName" : "getTotalAmount",
+    "signature" : "Double getTotalAmount()",
+    "returnType" : "Double",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 60,
+    "lineEnd" : 62
+  }, {
+    "id" : "4cd2ff35-4090-4a7e-99e4-1a0812497e1c",
+    "classId" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "methodName" : "setTotalAmount",
+    "signature" : "void setTotalAmount(Double)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "totalAmount",
+      "type" : "Double",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 64,
+    "lineEnd" : 66
+  }, {
+    "id" : "d2ff48fc-1814-4d57-a7ed-4555b6f1bf23",
+    "classId" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "methodName" : "getStatus",
+    "signature" : "String getStatus()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 68,
+    "lineEnd" : 70
+  }, {
+    "id" : "270ad128-b46e-4c89-accf-6b770e35d662",
+    "classId" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "methodName" : "setStatus",
+    "signature" : "void setStatus(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "status",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 72,
+    "lineEnd" : 74
+  }, {
+    "id" : "58351b60-4762-4fa2-a342-ff06f01d068e",
+    "classId" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "methodName" : "getAddress",
+    "signature" : "String getAddress()",
+    "returnType" : "String",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 76,
+    "lineEnd" : 78
+  }, {
+    "id" : "9d4b8f01-3098-4de5-b834-6c9bc7f49392",
+    "classId" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "methodName" : "setAddress",
+    "signature" : "void setAddress(String)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "address",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 80,
+    "lineEnd" : 82
+  }, {
+    "id" : "bf7d1a15-5e2d-4429-a78e-2987ed688843",
+    "classId" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "methodName" : "getCreatedAt",
+    "signature" : "Date getCreatedAt()",
+    "returnType" : "Date",
+    "parameters" : [ ],
+    "annotations" : [ ],
+    "lineStart" : 84,
+    "lineEnd" : 86
+  }, {
+    "id" : "26e9c6a3-f237-4200-9903-4931a6ac19ba",
+    "classId" : "70ad2815-50b1-41e5-a656-b87adb6ec66a",
+    "methodName" : "setCreatedAt",
+    "signature" : "void setCreatedAt(Date)",
+    "returnType" : "void",
+    "parameters" : [ {
+      "name" : "createdAt",
+      "type" : "Date",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 88,
+    "lineEnd" : 90
+  }, {
+    "id" : "5ed5851d-0825-498b-9b3f-c7c7ecee800a",
+    "classId" : "da64a0d1-abc2-423a-89a9-f1a49819bd17",
+    "methodName" : "save",
+    "signature" : "Order save(Order)",
+    "returnType" : "Order",
+    "parameters" : [ {
+      "name" : "order",
+      "type" : "Order",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 17,
+    "lineEnd" : 24
+  }, {
+    "id" : "57e405ff-542c-4b8f-9079-2deb97f60536",
+    "classId" : "da64a0d1-abc2-423a-89a9-f1a49819bd17",
+    "methodName" : "findById",
+    "signature" : "Order findById(String)",
+    "returnType" : "Order",
+    "parameters" : [ {
+      "name" : "id",
+      "type" : "String",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 26,
+    "lineEnd" : 28
+  }, {
+    "id" : "8a45bad0-bbf2-4ae4-b8b5-bbd6993d433d",
+    "classId" : "da64a0d1-abc2-423a-89a9-f1a49819bd17",
+    "methodName" : "findByUserId",
+    "signature" : "List<Order> findByUserId(Long)",
+    "returnType" : "List<Order>",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 30,
+    "lineEnd" : 38
+  }, {
+    "id" : "6632237c-67c1-4c56-99b1-fd4e499a0854",
+    "classId" : "da64a0d1-abc2-423a-89a9-f1a49819bd17",
+    "methodName" : "findRecentByUserId",
+    "signature" : "List<Order> findRecentByUserId(Long, int)",
+    "returnType" : "List<Order>",
+    "parameters" : [ {
+      "name" : "userId",
+      "type" : "Long",
+      "index" : 0
+    }, {
+      "name" : "limit",
+      "type" : "int",
+      "index" : 1
+    } ],
+    "annotations" : [ ],
+    "lineStart" : 40,
+    "lineEnd" : 44
+  } ],
+  "methodCalls" : [ {
+    "id" : "2b553b78-ce7d-479c-bb62-f1b4cfd8982a",
+    "sourceMethodId" : "6e7b83b8-0054-428c-b61b-adca94056ef4",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 18,
+    "callerExpression" : "inventoryRepository.findByProductId(productId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "f77e1159-dc76-44ac-a99c-e391d7752a7f",
+    "sourceMethodId" : "6e7b83b8-0054-428c-b61b-adca94056ef4",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 22,
+    "callerExpression" : "inventory.getAvailable()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "9e9105d7-082f-440d-9f90-07051b2a5234",
+    "sourceMethodId" : "d357e7e7-2d38-423d-8009-518161bee2d0",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 26,
+    "callerExpression" : "inventoryRepository.findByProductId(productId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "658ec4e8-191f-41e2-8c7b-ff6b9aa0f474",
+    "sourceMethodId" : "d357e7e7-2d38-423d-8009-518161bee2d0",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 27,
+    "callerExpression" : "inventory.getAvailable()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "6e710e82-94cc-48ad-adcb-c461deb81ae7",
+    "sourceMethodId" : "d357e7e7-2d38-423d-8009-518161bee2d0",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 28,
+    "callerExpression" : "inventory.getStock()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "3b8a64a2-5a88-4b68-b395-4b3c55183330",
+    "sourceMethodId" : "d357e7e7-2d38-423d-8009-518161bee2d0",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 29,
+    "callerExpression" : "inventoryRepository.update(productId, newStock)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "5707e7a6-0f39-4b8e-975c-39c531efdc5d",
+    "sourceMethodId" : "141c59d0-1dee-4602-ac12-4be31cb177a7",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 35,
+    "callerExpression" : "inventoryRepository.findInStock(productIds)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "bb998ae3-32dd-4e40-945b-bc296a69dfd4",
+    "sourceMethodId" : "97ce8df1-2f41-4e54-88ff-6a8e275976aa",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 25,
+    "callerExpression" : "orderHistory.isEmpty()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "6c1a0b8c-c40a-4419-a946-ed3128069cd3",
+    "sourceMethodId" : "97ce8df1-2f41-4e54-88ff-6a8e275976aa",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 30,
+    "callerExpression" : "orderHistory.get(0)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "0c852cbb-e01a-4bc0-88c1-9040a8e64832",
+    "sourceMethodId" : "97ce8df1-2f41-4e54-88ff-6a8e275976aa",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 33,
+    "callerExpression" : "productRepository.findByCategory(category)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "18eb0e1d-f8e1-45ed-a0e4-ec870bec3366",
+    "sourceMethodId" : "97ce8df1-2f41-4e54-88ff-6a8e275976aa",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 38,
+    "callerExpression" : "productIds.add(product.getId())",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "738747d4-b8de-4116-ad9a-349d878f6cf9",
+    "sourceMethodId" : "97ce8df1-2f41-4e54-88ff-6a8e275976aa",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 38,
+    "callerExpression" : "product.getId()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "885529fb-670d-45ed-a6e6-b33a4d5bacea",
+    "sourceMethodId" : "97ce8df1-2f41-4e54-88ff-6a8e275976aa",
+    "targetMethodId" : "141c59d0-1dee-4602-ac12-4be31cb177a7",
+    "targetQualifiedMethod" : "com.example.product.service.InventoryService.filterInStock",
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 41,
+    "callerExpression" : "inventoryService.filterInStock(productIds)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "110512a3-deec-4841-87b3-da960e0b42c4",
+    "sourceMethodId" : "97ce8df1-2f41-4e54-88ff-6a8e275976aa",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 46,
+    "callerExpression" : "productRepository.findById(inventory.getProductId())",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "7897c7d8-7bf6-4b01-b905-7478e64f9c17",
+    "sourceMethodId" : "97ce8df1-2f41-4e54-88ff-6a8e275976aa",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 46,
+    "callerExpression" : "inventory.getProductId()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "ceca6db4-57c6-451c-9936-8f01f71d8f44",
+    "sourceMethodId" : "97ce8df1-2f41-4e54-88ff-6a8e275976aa",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 48,
+    "callerExpression" : "recommendations.add(product)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "e3b0a4f6-39f9-4a82-a3ec-d3f91d25fe56",
+    "sourceMethodId" : "e6b9ba39-5adf-4c57-b387-7170efce17cb",
+    "targetMethodId" : "6e7b83b8-0054-428c-b61b-adca94056ef4",
+    "targetQualifiedMethod" : "com.example.product.service.InventoryService.checkStock",
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 21,
+    "callerExpression" : "inventoryService.checkStock(productId, quantity)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "0406a279-b50a-4a07-a52e-0c598633309f",
+    "sourceMethodId" : "9cab8253-308d-4d3c-848f-fc0870980284",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 26,
+    "callerExpression" : "productRepository.findById(productId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "7efc646c-537c-4e6b-8f70-d6baf136b694",
+    "sourceMethodId" : "c3e9e1c0-aaf7-4889-97b1-001fc7ecfb36",
+    "targetMethodId" : "d357e7e7-2d38-423d-8009-518161bee2d0",
+    "targetQualifiedMethod" : "com.example.product.service.InventoryService.decrease",
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 31,
+    "callerExpression" : "inventoryService.decrease(productId, quantity)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "23db2861-501e-40cf-83e2-5ab4edffebb3",
+    "sourceMethodId" : "7f0687ae-3155-4657-b370-4fc6e79076b1",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 25,
+    "callerExpression" : "inventories.get(productId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "b98d38ea-27f6-4066-b095-d963ea22bbb3",
+    "sourceMethodId" : "2ada7879-e29e-4fef-8115-aee388c82c02",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 31,
+    "callerExpression" : "inventories.get(productId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "9a17f129-1ae6-4eba-a45b-06be1ff4ed46",
+    "sourceMethodId" : "2ada7879-e29e-4fef-8115-aee388c82c02",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 32,
+    "callerExpression" : "inventory.getAvailable()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "045090e8-9f52-40e1-b42d-de397dfa8de6",
+    "sourceMethodId" : "2ada7879-e29e-4fef-8115-aee388c82c02",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 33,
+    "callerExpression" : "result.add(inventory)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "c108477c-6191-4f80-b41e-04a86b39b415",
+    "sourceMethodId" : "e19f8c5f-88c1-4fb5-990d-8b2de81e5440",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 40,
+    "callerExpression" : "inventories.get(productId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "ceb533ba-b3ca-4020-98a3-7b7ab7a9a3c5",
+    "sourceMethodId" : "e19f8c5f-88c1-4fb5-990d-8b2de81e5440",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 42,
+    "callerExpression" : "inventory.setStock(newStock)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "b751ff8d-e27d-4797-86ca-0a777a13a912",
+    "sourceMethodId" : "aef61720-21dc-48fe-8d62-32236806ec25",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 25,
+    "callerExpression" : "products.get(id)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "f59102ff-c75d-4595-8484-08fa22f49926",
+    "sourceMethodId" : "c5996ea5-2d87-405b-ae15-31e1904b4cf5",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 31,
+    "callerExpression" : "product.getCategory().equals(category)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "f94ffe78-e61e-4471-a4cc-2543681a58e8",
+    "sourceMethodId" : "c5996ea5-2d87-405b-ae15-31e1904b4cf5",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 31,
+    "callerExpression" : "product.getCategory()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "95f2b0be-4512-4a33-91dc-ad050521424a",
+    "sourceMethodId" : "c5996ea5-2d87-405b-ae15-31e1904b4cf5",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 32,
+    "callerExpression" : "result.add(product)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "ebcc9c9d-5d11-4710-8029-cf8c2202290c",
+    "sourceMethodId" : "c5996ea5-2d87-405b-ae15-31e1904b4cf5",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 30,
+    "callerExpression" : "products.values()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "f89f5781-db22-44ef-84bb-b9ba57bbae92",
+    "sourceMethodId" : "5b689e59-aa75-40f0-8875-4d7f30ad99d6",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 39,
+    "callerExpression" : "products.values()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "00ef85e4-cb88-43a4-bbfb-a9338c440a34",
+    "sourceMethodId" : "45ae6543-22fb-479b-a32b-1de94e1ee262",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 18,
+    "callerExpression" : "userRepository.findById(id)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "2259b40b-c2ad-4933-b46a-84d82adbf790",
+    "sourceMethodId" : "45ae6543-22fb-479b-a32b-1de94e1ee262",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 21,
+    "callerExpression" : "orderService.getOrdersByUserId(id)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "f5d6527c-1836-4750-8efe-a81ff5015518",
+    "sourceMethodId" : "7209c4a8-ec79-44b3-b36b-da509e3921ed",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : "com.example.product.api.ProductService.checkInventory",
+    "callType" : "RPC_METHOD_CALL",
+    "sourceLineNumber" : 23,
+    "callerExpression" : "productService.checkInventory(productId, quantity)",
+    "crossService" : true,
+    "targetService" : null
+  }, {
+    "id" : "d9f4f925-d478-4d33-9695-4f660cb128ba",
+    "sourceMethodId" : "7209c4a8-ec79-44b3-b36b-da509e3921ed",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : "com.example.order.api.OrderService.createOrder",
+    "callType" : "RPC_METHOD_CALL",
+    "sourceLineNumber" : 29,
+    "callerExpression" : "orderService.createOrder(userId, productId, quantity, address)",
+    "crossService" : true,
+    "targetService" : null
+  }, {
+    "id" : "65ee3539-9a73-4009-8d16-0d651c9ce8e4",
+    "sourceMethodId" : "7209c4a8-ec79-44b3-b36b-da509e3921ed",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : "com.example.product.api.ProductService.decreaseInventory",
+    "callType" : "RPC_METHOD_CALL",
+    "sourceLineNumber" : 32,
+    "callerExpression" : "productService.decreaseInventory(productId, quantity)",
+    "crossService" : true,
+    "targetService" : null
+  }, {
+    "id" : "cc2fc85a-ab72-4072-af60-bf1c2caebbf0",
+    "sourceMethodId" : "7209c4a8-ec79-44b3-b36b-da509e3921ed",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 34,
+    "callerExpression" : "order.getId()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "56ef6ef7-476a-4322-aee0-3d785fa778f3",
+    "sourceMethodId" : "1af58f4e-fcfc-4b68-a1ea-23bcd02717da",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : "com.example.order.api.OrderService.getUserOrderHistory",
+    "callType" : "RPC_METHOD_CALL",
+    "sourceLineNumber" : 39,
+    "callerExpression" : "orderService.getUserOrderHistory(userId)",
+    "crossService" : true,
+    "targetService" : null
+  }, {
+    "id" : "70c70a8f-19d1-4446-a482-f98626aa2603",
+    "sourceMethodId" : "1af58f4e-fcfc-4b68-a1ea-23bcd02717da",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : "com.example.product.api.RecommendationService.recommend",
+    "callType" : "RPC_METHOD_CALL",
+    "sourceLineNumber" : 42,
+    "callerExpression" : "recommendationService.recommend(userId, orderHistory)",
+    "crossService" : true,
+    "targetService" : null
+  }, {
+    "id" : "1a535216-21fb-4869-8a4c-e466d868b24a",
+    "sourceMethodId" : "ccf385a8-b9ca-45fc-a614-cec7b4f26ac8",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 17,
+    "callerExpression" : "userRepository.findById(userId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "6a983122-79ee-41ec-b511-b6ff01e83bf3",
+    "sourceMethodId" : "79d5572e-d1b9-4674-a686-939262207e55",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 23,
+    "callerExpression" : "userRepository.findById(userId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "d8047dd7-e31f-434c-a1f8-9ff4702edde1",
+    "sourceMethodId" : "c6c985ff-875f-4013-a53f-953a809f3272",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 21,
+    "callerExpression" : "users.get(id)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "6ac3bee8-56a7-49bb-a21e-2edf7eb5cb49",
+    "sourceMethodId" : "360a0545-9160-4a66-80aa-43784b352e36",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 25,
+    "callerExpression" : "users.put(user.getId(), user)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "095b62a3-03e0-41b0-b39e-5cd16dfb28a5",
+    "sourceMethodId" : "360a0545-9160-4a66-80aa-43784b352e36",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 25,
+    "callerExpression" : "user.getId()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "c8b24793-bff6-43d7-acb1-4cc832abe2b4",
+    "sourceMethodId" : "11561e34-6503-447e-bdb1-fc3a87cb8a2e",
+    "targetMethodId" : "45ae6543-22fb-479b-a32b-1de94e1ee262",
+    "targetQualifiedMethod" : "com.example.user.service.UserService.getUserWithOrders",
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 23,
+    "callerExpression" : "userService.getUserWithOrders(id)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "fa138ecd-760a-4a38-8099-15d7fcb76bd3",
+    "sourceMethodId" : "ede497e9-b580-4bf7-b1dd-ec9a11dede16",
+    "targetMethodId" : "7209c4a8-ec79-44b3-b36b-da509e3921ed",
+    "targetQualifiedMethod" : "com.example.user.service.UserFacadeService.placeOrder",
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 32,
+    "callerExpression" : "userFacadeService.placeOrder(userId, productId, quantity, address)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "26983c5e-14c2-4556-b7fa-3a109230d227",
+    "sourceMethodId" : "6e7b3b23-36b6-4214-8ae8-6fa2dc07526a",
+    "targetMethodId" : "1af58f4e-fcfc-4b68-a1ea-23bcd02717da",
+    "targetQualifiedMethod" : "com.example.user.service.UserFacadeService.getRecommendations",
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 37,
+    "callerExpression" : "userFacadeService.getRecommendations(id)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "079da985-fab6-449b-af56-0d470d9ee8da",
+    "sourceMethodId" : "cb821f0f-1363-443e-a49a-095825b44421",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 10,
+    "callerExpression" : "System.out.println(\"Sending email to \" + email)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "c552acb3-429b-46a6-8391-1a612d296787",
+    "sourceMethodId" : "cb821f0f-1363-443e-a49a-095825b44421",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 11,
+    "callerExpression" : "System.out.println(\"Subject: \" + subject)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "619c326d-f5b0-44c9-917c-c2c8122c3b62",
+    "sourceMethodId" : "cb821f0f-1363-443e-a49a-095825b44421",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 12,
+    "callerExpression" : "System.out.println(\"Content: \" + content)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "4373a793-3a61-4426-a5ac-c9930dd47675",
+    "sourceMethodId" : "0a43f4d3-30c4-4b28-ad64-3758839b19c0",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 10,
+    "callerExpression" : "System.out.println(\"Sending SMS to \" + phone)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "f1582fc1-6639-47e3-8efc-6fffc052bef9",
+    "sourceMethodId" : "0a43f4d3-30c4-4b28-ad64-3758839b19c0",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 11,
+    "callerExpression" : "System.out.println(\"Content: \" + content)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "09b8c82b-e87e-425b-9f4d-3dc0b95cd480",
+    "sourceMethodId" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : "com.example.user.api.UserInfoService.getUserContacts",
+    "callType" : "RPC_METHOD_CALL",
+    "sourceLineNumber" : 28,
+    "callerExpression" : "userInfoService.getUserContacts(userId)",
+    "crossService" : true,
+    "targetService" : null
+  }, {
+    "id" : "ae279ff7-829e-4c7d-971b-04653b6bd220",
+    "sourceMethodId" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 31,
+    "callerExpression" : "\"EMAIL\".equals(type)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "64202022-cdc7-43a6-a9c3-1a97f0fb4fe6",
+    "sourceMethodId" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 31,
+    "callerExpression" : "user.getEmail()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "6658c0c4-6bb0-4824-aeae-53368f80bec0",
+    "sourceMethodId" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 33,
+    "callerExpression" : "\"SMS\".equals(type)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "8a293f68-47cb-4e67-b763-636590364aa9",
+    "sourceMethodId" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 33,
+    "callerExpression" : "user.getPhone()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "ad15955b-8df3-42da-8962-29ea06b17266",
+    "sourceMethodId" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+    "targetMethodId" : "0a43f4d3-30c4-4b28-ad64-3758839b19c0",
+    "targetQualifiedMethod" : "com.example.notification.service.SmsService.send",
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 34,
+    "callerExpression" : "smsService.send(user.getPhone(), content)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "32b63707-1e44-4a42-b037-be2bf57bf8e5",
+    "sourceMethodId" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 34,
+    "callerExpression" : "user.getPhone()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "dc5e1f8c-0574-49c6-a16f-50a95ddfe50e",
+    "sourceMethodId" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+    "targetMethodId" : "cb821f0f-1363-443e-a49a-095825b44421",
+    "targetQualifiedMethod" : "com.example.notification.service.EmailService.send",
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 32,
+    "callerExpression" : "emailService.send(user.getEmail(), \"系统通知\", content)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "04f7bd1a-bc7b-4f0f-a211-9208f84c3300",
+    "sourceMethodId" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 32,
+    "callerExpression" : "user.getEmail()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "196a4763-c22f-451e-b794-36fd57e8a975",
+    "sourceMethodId" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 39,
+    "callerExpression" : "notification.setUserId(userId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "789adea8-6dce-4d41-b80f-57de03b4cce9",
+    "sourceMethodId" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 40,
+    "callerExpression" : "notification.setType(type)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "ddb5b98d-310e-49c9-abb0-92c9328b7a5a",
+    "sourceMethodId" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 41,
+    "callerExpression" : "notification.setContent(content)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "e0689522-f5b5-4ab1-9a34-43a40dadae08",
+    "sourceMethodId" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 42,
+    "callerExpression" : "notification.setStatus(\"SENT\")",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "a8f07efe-40fd-4b4f-9688-4aaf0e77c5e7",
+    "sourceMethodId" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 43,
+    "callerExpression" : "notificationRepository.save(notification)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "2bbf0e65-f689-4284-b327-c4d18a3b1610",
+    "sourceMethodId" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 45,
+    "callerExpression" : "notification.getId()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "3ada6c1d-7802-42fb-b595-5cbda57004fe",
+    "sourceMethodId" : "0245c5e9-265c-4bf6-a636-866212a23a65",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 16,
+    "callerExpression" : "notification.getId()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "34c74b69-75fc-4e0f-92c9-c9cba49be07a",
+    "sourceMethodId" : "0245c5e9-265c-4bf6-a636-866212a23a65",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 17,
+    "callerExpression" : "notification.setId(\"N\" + String.format(\"%03d\", idGenerator.getAndIncrement()))",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "22ceacd7-6cbf-4ff3-b03e-ad338a4701cb",
+    "sourceMethodId" : "0245c5e9-265c-4bf6-a636-866212a23a65",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 17,
+    "callerExpression" : "String.format(\"%03d\", idGenerator.getAndIncrement())",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "47f10dfb-ba04-4cb7-8e34-b47357e94ca5",
+    "sourceMethodId" : "0245c5e9-265c-4bf6-a636-866212a23a65",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 17,
+    "callerExpression" : "idGenerator.getAndIncrement()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "58a0eccc-4e48-4b0a-8c9e-becd3e1e2862",
+    "sourceMethodId" : "0245c5e9-265c-4bf6-a636-866212a23a65",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 19,
+    "callerExpression" : "notifications.put(notification.getId(), notification)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "cd4e4308-09ae-4856-bf10-55a04a33c842",
+    "sourceMethodId" : "0245c5e9-265c-4bf6-a636-866212a23a65",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 19,
+    "callerExpression" : "notification.getId()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "7a723d95-fbb5-4bbd-adb0-891f88911791",
+    "sourceMethodId" : "4eb23ed4-9735-45cf-af55-a824cba7c1d4",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 24,
+    "callerExpression" : "notifications.get(id)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "54568dd0-492d-4859-86f9-f5d8a7806e51",
+    "sourceMethodId" : "e8eec721-4d7e-4f04-b015-0b9a7e06ce2d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 23,
+    "callerExpression" : "payment.setOrderId(orderId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "9e0b10fb-7d2a-45f3-9d0e-6c227526159c",
+    "sourceMethodId" : "e8eec721-4d7e-4f04-b015-0b9a7e06ce2d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 24,
+    "callerExpression" : "payment.setAmount(amount)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "8343d72c-26bd-41e2-8bc4-2ff6f189dea2",
+    "sourceMethodId" : "e8eec721-4d7e-4f04-b015-0b9a7e06ce2d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 25,
+    "callerExpression" : "payment.setStatus(\"PENDING\")",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "575c1664-e190-40a7-8f2f-93cd11f902b0",
+    "sourceMethodId" : "e8eec721-4d7e-4f04-b015-0b9a7e06ce2d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 26,
+    "callerExpression" : "payment.setMethod(\"ALIPAY\")",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "52875636-8a88-4a06-ba3c-43c8927430c7",
+    "sourceMethodId" : "e8eec721-4d7e-4f04-b015-0b9a7e06ce2d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 27,
+    "callerExpression" : "paymentRepository.save(payment)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "4104ac24-2c20-4267-943b-3d300e567d8d",
+    "sourceMethodId" : "e8eec721-4d7e-4f04-b015-0b9a7e06ce2d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : "com.example.notification.api.NotificationService.sendNotification",
+    "callType" : "RPC_METHOD_CALL",
+    "sourceLineNumber" : 30,
+    "callerExpression" : "notificationService.sendNotification(extractUserIdFromOrder(orderId), \"EMAIL\", \"您的订单 \" + orderId + \" 支付金额 \" + amount + \" 元，请尽快完成支付。\")",
+    "crossService" : true,
+    "targetService" : null
+  }, {
+    "id" : "d4e3b105-3525-499b-897d-34a9a1303e55",
+    "sourceMethodId" : "e8eec721-4d7e-4f04-b015-0b9a7e06ce2d",
+    "targetMethodId" : "4e40ef73-f06f-4d57-93d6-cf272affb2b9",
+    "targetQualifiedMethod" : "com.example.payment.service.PaymentServiceImpl.extractUserIdFromOrder",
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 31,
+    "callerExpression" : "extractUserIdFromOrder(orderId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "854d16c3-e9dd-4188-81e5-d3bffc12ad6c",
+    "sourceMethodId" : "e8eec721-4d7e-4f04-b015-0b9a7e06ce2d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 36,
+    "callerExpression" : "payment.getId()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "c3ee8759-338e-4895-88ad-c3f622382320",
+    "sourceMethodId" : "5bc21533-70b9-4a9f-973d-73eee8598a2c",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 41,
+    "callerExpression" : "paymentRepository.findById(paymentId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "2e231c72-7443-4459-b60b-aa0bbb50866e",
+    "sourceMethodId" : "5bc21533-70b9-4a9f-973d-73eee8598a2c",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 42,
+    "callerExpression" : "payment.getStatus()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "1f20e576-3c54-444a-8227-697e2995c9a3",
+    "sourceMethodId" : "73744de8-5c49-40ad-a110-89c10f762559",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 16,
+    "callerExpression" : "payment.getId()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "d1a5a930-2b0b-4242-b861-245f0ca32fcc",
+    "sourceMethodId" : "73744de8-5c49-40ad-a110-89c10f762559",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 17,
+    "callerExpression" : "payment.setId(\"PAY\" + String.format(\"%03d\", idGenerator.getAndIncrement()))",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "f86b8e26-1163-44c8-93ca-1ea1fc2b3eca",
+    "sourceMethodId" : "73744de8-5c49-40ad-a110-89c10f762559",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 17,
+    "callerExpression" : "String.format(\"%03d\", idGenerator.getAndIncrement())",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "70a1c9f8-4fa9-4a69-89ac-3110319957f0",
+    "sourceMethodId" : "73744de8-5c49-40ad-a110-89c10f762559",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 17,
+    "callerExpression" : "idGenerator.getAndIncrement()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "f73095e0-d059-4774-862a-abd44ca8d702",
+    "sourceMethodId" : "73744de8-5c49-40ad-a110-89c10f762559",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 19,
+    "callerExpression" : "payments.put(payment.getId(), payment)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "5bf85dc1-7b03-40b9-af39-b68afa26adec",
+    "sourceMethodId" : "73744de8-5c49-40ad-a110-89c10f762559",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 19,
+    "callerExpression" : "payment.getId()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "81df6d05-2bcc-421a-8b93-15d082c47fa6",
+    "sourceMethodId" : "eaf38d66-ed54-42cb-b0c8-9357d20a40aa",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 24,
+    "callerExpression" : "payments.get(id)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "e9388ee6-5444-4c52-8384-031cf83c63cf",
+    "sourceMethodId" : "0bd34f80-2d80-40db-aeb1-91d1d0c26b8e",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 29,
+    "callerExpression" : "payment.getOrderId().equals(orderId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "17c6a6ae-91e5-4653-a202-7337a07151cc",
+    "sourceMethodId" : "0bd34f80-2d80-40db-aeb1-91d1d0c26b8e",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 29,
+    "callerExpression" : "payment.getOrderId()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "7c43bdd4-a396-46e9-9615-85505927610d",
+    "sourceMethodId" : "0bd34f80-2d80-40db-aeb1-91d1d0c26b8e",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 28,
+    "callerExpression" : "payments.values()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "f3a4855d-dae2-4c26-a9a9-ae2a9ddbd984",
+    "sourceMethodId" : "49d92616-fc69-4a05-a7de-44da63a40a43",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : "com.example.user.api.UserInfoService.getUserInfo",
+    "callType" : "RPC_METHOD_CALL",
+    "sourceLineNumber" : 31,
+    "callerExpression" : "userInfoService.getUserInfo(userId)",
+    "crossService" : true,
+    "targetService" : null
+  }, {
+    "id" : "1f59348f-4b79-4ae7-9a97-ed2911dd41b7",
+    "sourceMethodId" : "49d92616-fc69-4a05-a7de-44da63a40a43",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : "com.example.product.api.ProductService.getProductInfo",
+    "callType" : "RPC_METHOD_CALL",
+    "sourceLineNumber" : 37,
+    "callerExpression" : "productService.getProductInfo(productId)",
+    "crossService" : true,
+    "targetService" : null
+  }, {
+    "id" : "b1c5e850-412c-4051-b0b7-2b5885558ec1",
+    "sourceMethodId" : "49d92616-fc69-4a05-a7de-44da63a40a43",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 42,
+    "callerExpression" : "product.getPrice()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "6f38e1c7-b441-4371-a0f2-fc8ba9a32ead",
+    "sourceMethodId" : "49d92616-fc69-4a05-a7de-44da63a40a43",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 46,
+    "callerExpression" : "order.setUserId(userId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "b8781af7-b9c2-415d-b4c6-6501f1d05f25",
+    "sourceMethodId" : "49d92616-fc69-4a05-a7de-44da63a40a43",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 47,
+    "callerExpression" : "order.setProductId(productId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "2fe887bd-7f6a-45d8-bfbf-d50406e1c477",
+    "sourceMethodId" : "49d92616-fc69-4a05-a7de-44da63a40a43",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 48,
+    "callerExpression" : "order.setQuantity(quantity)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "de642c8c-fa20-4b18-a97a-a3860aa667ea",
+    "sourceMethodId" : "49d92616-fc69-4a05-a7de-44da63a40a43",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 49,
+    "callerExpression" : "order.setTotalAmount(totalAmount)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "60f76fe8-d8be-436c-895a-0cff64ec643b",
+    "sourceMethodId" : "49d92616-fc69-4a05-a7de-44da63a40a43",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 50,
+    "callerExpression" : "order.setAddress(address)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "16b00fb8-10e3-4e26-9b74-059672a5fb9e",
+    "sourceMethodId" : "49d92616-fc69-4a05-a7de-44da63a40a43",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 51,
+    "callerExpression" : "order.setStatus(\"PENDING\")",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "bf5f3a53-53db-4133-b1d4-10cf30154366",
+    "sourceMethodId" : "49d92616-fc69-4a05-a7de-44da63a40a43",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 52,
+    "callerExpression" : "orderRepository.save(order)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "308ea1be-9e40-45b3-a170-c181de59819b",
+    "sourceMethodId" : "49d92616-fc69-4a05-a7de-44da63a40a43",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : "com.example.payment.api.PaymentService.createPayment",
+    "callType" : "RPC_METHOD_CALL",
+    "sourceLineNumber" : 55,
+    "callerExpression" : "paymentService.createPayment(order.getId(), totalAmount)",
+    "crossService" : true,
+    "targetService" : null
+  }, {
+    "id" : "bfd4da1e-73db-4e29-b22c-fe26ca385c5f",
+    "sourceMethodId" : "49d92616-fc69-4a05-a7de-44da63a40a43",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 55,
+    "callerExpression" : "order.getId()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "3d316be4-a13f-4f1a-be46-e7a3ce4041c6",
+    "sourceMethodId" : "42eb1e33-2dbf-44d5-a294-e56acfd427da",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 62,
+    "callerExpression" : "orderRepository.findByUserId(userId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "cc141ab8-6255-4064-ab97-01a45585d9aa",
+    "sourceMethodId" : "e7920d03-c5fa-439b-9f13-882ae5025f8d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 67,
+    "callerExpression" : "orderRepository.findRecentByUserId(userId, 10)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "efb59fac-1a28-4b2a-a6c9-2a62d6c7f0e3",
+    "sourceMethodId" : "e7920d03-c5fa-439b-9f13-882ae5025f8d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : "com.example.product.api.ProductService.getProductInfo",
+    "callType" : "RPC_METHOD_CALL",
+    "sourceLineNumber" : 72,
+    "callerExpression" : "productService.getProductInfo(order.getProductId())",
+    "crossService" : true,
+    "targetService" : null
+  }, {
+    "id" : "c6f0edf1-33e4-48df-8511-d30da402be04",
+    "sourceMethodId" : "e7920d03-c5fa-439b-9f13-882ae5025f8d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 72,
+    "callerExpression" : "order.getProductId()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "3d3c550e-4eaf-4723-a976-92e5af7a04d0",
+    "sourceMethodId" : "e7920d03-c5fa-439b-9f13-882ae5025f8d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 73,
+    "callerExpression" : "product.getCategory()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "fbf199a1-c194-46e1-aa35-8e8495ea6dbc",
+    "sourceMethodId" : "e7920d03-c5fa-439b-9f13-882ae5025f8d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 74,
+    "callerExpression" : "categories.contains(product.getCategory())",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "7975d38b-7663-4bd8-b538-2c1f9a4c83d7",
+    "sourceMethodId" : "e7920d03-c5fa-439b-9f13-882ae5025f8d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 74,
+    "callerExpression" : "product.getCategory()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "06b93833-40e2-42b5-be17-59010cd06d0e",
+    "sourceMethodId" : "e7920d03-c5fa-439b-9f13-882ae5025f8d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 75,
+    "callerExpression" : "categories.add(product.getCategory())",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "b9c089f9-2f85-49f8-b721-9a0f79fe8907",
+    "sourceMethodId" : "e7920d03-c5fa-439b-9f13-882ae5025f8d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 75,
+    "callerExpression" : "product.getCategory()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "4fdf2493-9e31-489a-be2d-693398c27849",
+    "sourceMethodId" : "5ed5851d-0825-498b-9b3f-c7c7ecee800a",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 18,
+    "callerExpression" : "order.getId()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "12cfcb2c-cb3a-4b84-a385-79b543e6d48e",
+    "sourceMethodId" : "5ed5851d-0825-498b-9b3f-c7c7ecee800a",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 20,
+    "callerExpression" : "order.setId(\"O\" + dateStr + String.format(\"%03d\", idGenerator.getAndIncrement()))",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "4dbc03d1-fb1d-4789-b10d-cd49a2736a64",
+    "sourceMethodId" : "5ed5851d-0825-498b-9b3f-c7c7ecee800a",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 20,
+    "callerExpression" : "String.format(\"%03d\", idGenerator.getAndIncrement())",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "740ce28b-3f47-41a8-aaa1-d430474cc5b6",
+    "sourceMethodId" : "5ed5851d-0825-498b-9b3f-c7c7ecee800a",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 20,
+    "callerExpression" : "idGenerator.getAndIncrement()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "4094a539-99c0-4534-a827-99e5704ef8cf",
+    "sourceMethodId" : "5ed5851d-0825-498b-9b3f-c7c7ecee800a",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 22,
+    "callerExpression" : "orders.put(order.getId(), order)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "236f23f1-1cbe-4028-8d21-45eb53e8acb5",
+    "sourceMethodId" : "5ed5851d-0825-498b-9b3f-c7c7ecee800a",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 22,
+    "callerExpression" : "order.getId()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "e95314c6-7a55-4bed-b1bb-5d350ec94b24",
+    "sourceMethodId" : "57e405ff-542c-4b8f-9079-2deb97f60536",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 27,
+    "callerExpression" : "orders.get(id)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "af0b9a03-589d-4244-bc68-b9ed417b87fd",
+    "sourceMethodId" : "8a45bad0-bbf2-4ae4-b8b5-bbd6993d433d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 33,
+    "callerExpression" : "order.getUserId().equals(userId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "7612731e-f888-442a-87d7-291503dd31fe",
+    "sourceMethodId" : "8a45bad0-bbf2-4ae4-b8b5-bbd6993d433d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 33,
+    "callerExpression" : "order.getUserId()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "6309eaaa-f663-4919-b242-e06c1aa568bb",
+    "sourceMethodId" : "8a45bad0-bbf2-4ae4-b8b5-bbd6993d433d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 34,
+    "callerExpression" : "result.add(order)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "2ecfe306-90ad-475e-9fd1-c96709c3ba0b",
+    "sourceMethodId" : "8a45bad0-bbf2-4ae4-b8b5-bbd6993d433d",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 32,
+    "callerExpression" : "orders.values()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "f469bcf2-b7e9-4f01-887d-ed1922807b19",
+    "sourceMethodId" : "6632237c-67c1-4c56-99b1-fd4e499a0854",
+    "targetMethodId" : "8a45bad0-bbf2-4ae4-b8b5-bbd6993d433d",
+    "targetQualifiedMethod" : "com.example.order.repository.OrderRepository.findByUserId",
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 41,
+    "callerExpression" : "findByUserId(userId)",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "85b6f62f-a86b-493f-85b2-cfa97ee71959",
+    "sourceMethodId" : "6632237c-67c1-4c56-99b1-fd4e499a0854",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 43,
+    "callerExpression" : "userOrders.size()",
+    "crossService" : false,
+    "targetService" : null
+  }, {
+    "id" : "ea1c58f5-5ee9-42f1-9bf0-f23fe466b9cc",
+    "sourceMethodId" : "6632237c-67c1-4c56-99b1-fd4e499a0854",
+    "targetMethodId" : null,
+    "targetQualifiedMethod" : null,
+    "callType" : "INTERNAL_METHOD_CALL",
+    "sourceLineNumber" : 43,
+    "callerExpression" : "userOrders.subList(0, limit)",
+    "crossService" : false,
+    "targetService" : null
+  } ],
+  "callChains" : [ {
+    "id" : "1c04219a-df20-423d-8a68-e2dc4ec744f1",
+    "entryPoint" : {
+      "level" : 0,
+      "methodId" : "11561e34-6503-447e-bdb1-fc3a87cb8a2e",
+      "classId" : "bd8d4f37-bcc3-4fa4-9d4d-1a9055daa92b",
+      "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+      "callType" : null,
+      "httpEndpoint" : "GET /api/users/{id}"
+    },
+    "chain" : [ {
+      "level" : 0,
+      "methodId" : "11561e34-6503-447e-bdb1-fc3a87cb8a2e",
+      "classId" : "bd8d4f37-bcc3-4fa4-9d4d-1a9055daa92b",
+      "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+      "callType" : null,
+      "httpEndpoint" : "GET /api/users/{id}"
+    }, {
+      "level" : 1,
+      "methodId" : "45ae6543-22fb-479b-a32b-1de94e1ee262",
+      "classId" : "9b532363-a55d-44e1-b836-5c338fdbb31f",
+      "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+      "callType" : "INTERNAL_METHOD_CALL",
+      "httpEndpoint" : null
+    } ],
+    "maxDepth" : 2,
+    "involvedServices" : [ "a57681c7-d21f-43d2-a7a2-470a4328d002" ],
+    "crossService" : false
+  }, {
+    "id" : "92263057-49a6-4861-ad4f-9d2016490fdf",
+    "entryPoint" : {
+      "level" : 0,
+      "methodId" : "ede497e9-b580-4bf7-b1dd-ec9a11dede16",
+      "classId" : "bd8d4f37-bcc3-4fa4-9d4d-1a9055daa92b",
+      "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+      "callType" : null,
+      "httpEndpoint" : "POST /api/users/{userId}/orders"
+    },
+    "chain" : [ {
+      "level" : 0,
+      "methodId" : "ede497e9-b580-4bf7-b1dd-ec9a11dede16",
+      "classId" : "bd8d4f37-bcc3-4fa4-9d4d-1a9055daa92b",
+      "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+      "callType" : null,
+      "httpEndpoint" : "POST /api/users/{userId}/orders"
+    }, {
+      "level" : 1,
+      "methodId" : "7209c4a8-ec79-44b3-b36b-da509e3921ed",
+      "classId" : "0c1e103c-fe82-42ff-9691-ee4d7494fded",
+      "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+      "callType" : "INTERNAL_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 2,
+      "methodId" : "e6b9ba39-5adf-4c57-b387-7170efce17cb",
+      "classId" : "7c492bef-842d-4394-b4f2-785d9f736840",
+      "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+      "callType" : "RPC_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 3,
+      "methodId" : "6e7b83b8-0054-428c-b61b-adca94056ef4",
+      "classId" : "f5c5f4ce-4a90-46ce-8530-c93dd8fb448f",
+      "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+      "callType" : "INTERNAL_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 2,
+      "methodId" : "49d92616-fc69-4a05-a7de-44da63a40a43",
+      "classId" : "92820d97-8ec0-4926-be04-c8f1618a56ca",
+      "serviceId" : "5fd009a6-5117-4d21-9c19-56110c825af7",
+      "callType" : "RPC_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 3,
+      "methodId" : "ccf385a8-b9ca-45fc-a614-cec7b4f26ac8",
+      "classId" : "8e8f5129-d4e1-45a2-aea6-49db3ae8c450",
+      "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+      "callType" : "RPC_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 3,
+      "methodId" : "9cab8253-308d-4d3c-848f-fc0870980284",
+      "classId" : "7c492bef-842d-4394-b4f2-785d9f736840",
+      "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+      "callType" : "RPC_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 3,
+      "methodId" : "e8eec721-4d7e-4f04-b015-0b9a7e06ce2d",
+      "classId" : "76507a9e-3b08-42d5-b1c2-35e637a12ca2",
+      "serviceId" : "60a4e5f0-4651-4149-b4f8-30c694477796",
+      "callType" : "RPC_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 4,
+      "methodId" : "c7b39c20-bda9-463a-8d35-330d1df04d13",
+      "classId" : "2c2cad62-b803-45ef-a172-b7ab4a442bc4",
+      "serviceId" : "c8ee012f-f71b-4ded-8f7a-547ed5cf8566",
+      "callType" : "RPC_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 5,
+      "methodId" : "79d5572e-d1b9-4674-a686-939262207e55",
+      "classId" : "8e8f5129-d4e1-45a2-aea6-49db3ae8c450",
+      "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+      "callType" : "RPC_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 5,
+      "methodId" : "0a43f4d3-30c4-4b28-ad64-3758839b19c0",
+      "classId" : "5d546782-7e90-42da-8f1f-9f9188a2cf82",
+      "serviceId" : "c8ee012f-f71b-4ded-8f7a-547ed5cf8566",
+      "callType" : "INTERNAL_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 5,
+      "methodId" : "cb821f0f-1363-443e-a49a-095825b44421",
+      "classId" : "9f2b3879-1bba-4d44-84da-a63c32e04127",
+      "serviceId" : "c8ee012f-f71b-4ded-8f7a-547ed5cf8566",
+      "callType" : "INTERNAL_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 4,
+      "methodId" : "4e40ef73-f06f-4d57-93d6-cf272affb2b9",
+      "classId" : "76507a9e-3b08-42d5-b1c2-35e637a12ca2",
+      "serviceId" : "60a4e5f0-4651-4149-b4f8-30c694477796",
+      "callType" : "INTERNAL_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 2,
+      "methodId" : "c3e9e1c0-aaf7-4889-97b1-001fc7ecfb36",
+      "classId" : "7c492bef-842d-4394-b4f2-785d9f736840",
+      "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+      "callType" : "RPC_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 3,
+      "methodId" : "d357e7e7-2d38-423d-8009-518161bee2d0",
+      "classId" : "f5c5f4ce-4a90-46ce-8530-c93dd8fb448f",
+      "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+      "callType" : "INTERNAL_METHOD_CALL",
+      "httpEndpoint" : null
+    } ],
+    "maxDepth" : 15,
+    "involvedServices" : [ "a57681c7-d21f-43d2-a7a2-470a4328d002", "0902a0e9-31e8-4ec7-96bf-8264dad51454", "5fd009a6-5117-4d21-9c19-56110c825af7", "60a4e5f0-4651-4149-b4f8-30c694477796", "c8ee012f-f71b-4ded-8f7a-547ed5cf8566" ],
+    "crossService" : true
+  }, {
+    "id" : "fc8ec4ec-35f1-4983-bf02-62908a2b5eb9",
+    "entryPoint" : {
+      "level" : 0,
+      "methodId" : "6e7b3b23-36b6-4214-8ae8-6fa2dc07526a",
+      "classId" : "bd8d4f37-bcc3-4fa4-9d4d-1a9055daa92b",
+      "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+      "callType" : null,
+      "httpEndpoint" : "GET /api/users/{id}/recommendations"
+    },
+    "chain" : [ {
+      "level" : 0,
+      "methodId" : "6e7b3b23-36b6-4214-8ae8-6fa2dc07526a",
+      "classId" : "bd8d4f37-bcc3-4fa4-9d4d-1a9055daa92b",
+      "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+      "callType" : null,
+      "httpEndpoint" : "GET /api/users/{id}/recommendations"
+    }, {
+      "level" : 1,
+      "methodId" : "1af58f4e-fcfc-4b68-a1ea-23bcd02717da",
+      "classId" : "0c1e103c-fe82-42ff-9691-ee4d7494fded",
+      "serviceId" : "a57681c7-d21f-43d2-a7a2-470a4328d002",
+      "callType" : "INTERNAL_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 2,
+      "methodId" : "e7920d03-c5fa-439b-9f13-882ae5025f8d",
+      "classId" : "92820d97-8ec0-4926-be04-c8f1618a56ca",
+      "serviceId" : "5fd009a6-5117-4d21-9c19-56110c825af7",
+      "callType" : "RPC_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 3,
+      "methodId" : "9cab8253-308d-4d3c-848f-fc0870980284",
+      "classId" : "7c492bef-842d-4394-b4f2-785d9f736840",
+      "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+      "callType" : "RPC_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 2,
+      "methodId" : "97ce8df1-2f41-4e54-88ff-6a8e275976aa",
+      "classId" : "d2178815-48c4-4407-92f5-43f0c9808e21",
+      "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+      "callType" : "RPC_METHOD_CALL",
+      "httpEndpoint" : null
+    }, {
+      "level" : 3,
+      "methodId" : "141c59d0-1dee-4602-ac12-4be31cb177a7",
+      "classId" : "f5c5f4ce-4a90-46ce-8530-c93dd8fb448f",
+      "serviceId" : "0902a0e9-31e8-4ec7-96bf-8264dad51454",
+      "callType" : "INTERNAL_METHOD_CALL",
+      "httpEndpoint" : null
+    } ],
+    "maxDepth" : 6,
+    "involvedServices" : [ "a57681c7-d21f-43d2-a7a2-470a4328d002", "5fd009a6-5117-4d21-9c19-56110c825af7", "0902a0e9-31e8-4ec7-96bf-8264dad51454" ],
+    "crossService" : true
+  } ]
+}

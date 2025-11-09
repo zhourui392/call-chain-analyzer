@@ -73,6 +73,67 @@ public class ProjectScanner {
     }
 
     /**
+     * Discover service directories under a root directory.
+     * A service directory matches one of the following rules:
+     *  - Contains a pom.xml
+     *  - Contains standard source directory: src/main/java
+     * This will not include the root directory itself, only its sub-directories.
+     *
+     * @param rootDir   the parent directory that contains services
+     * @param recursive whether to scan recursively
+     * @return list of absolute service directory paths
+     */
+    public List<String> discoverServiceDirs(String rootDir, boolean recursive) {
+        Path rootPath = Paths.get(rootDir);
+        if (!Files.exists(rootPath) || !Files.isDirectory(rootPath)) {
+            throw new IllegalArgumentException("Root directory does not exist or is not a directory: " + rootDir);
+        }
+
+        logger.info("Discovering services under: {} (recursive={})", rootPath.toAbsolutePath(), recursive);
+
+        List<String> result = new ArrayList<>();
+        try {
+            if (recursive) {
+                try (Stream<Path> paths = Files.walk(rootPath)) {
+                    paths
+                            .filter(Files::isDirectory)
+                            .filter(p -> !p.equals(rootPath))
+                            .filter(this::isServiceDir)
+                            .forEach(p -> result.add(p.toAbsolutePath().toString()));
+                }
+            } else {
+                try (Stream<Path> paths = Files.list(rootPath)) {
+                    paths
+                            .filter(Files::isDirectory)
+                            .filter(this::isServiceDir)
+                            .forEach(p -> result.add(p.toAbsolutePath().toString()));
+                }
+            }
+        } catch (Exception e) {
+            logger.error("Failed to discover service directories under {}: {}", rootDir, e.getMessage());
+        }
+
+        logger.info("Discovered {} service directories", result.size());
+        return result;
+    }
+
+    private boolean isServiceDir(Path dir) {
+        try {
+            Path pom = dir.resolve("pom.xml");
+            Path srcMainJava = dir.resolve(Paths.get("src", "main", "java"));
+            if (Files.exists(pom)) {
+                return true;
+            }
+            if (Files.exists(srcMainJava) && Files.isDirectory(srcMainJava)) {
+                return true;
+            }
+        } catch (Exception e) {
+            logger.debug("Skip invalid path {}: {}", dir, e.getMessage());
+        }
+        return false;
+    }
+
+    /**
      * Parse Maven pom.xml to extract service information
      */
     private void parsePomXml(File pomFile, ServiceInfo serviceInfo) {

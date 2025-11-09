@@ -42,6 +42,12 @@ java -jar target/call-chain-analyzer-1.0.0-SNAPSHOT-jar-with-dependencies.jar \
   --services ./user-service,./order-service,./payment-service \
   --output chains.json \
   --pretty
+
+# 从父目录自动发现服务（Windows 11 PowerShell 示例）
+java -jar target/call-chain-analyzer-1.0.0-SNAPSHOT-jar-with-dependencies.jar \
+  --services-dir .\\services \
+  --recursive \
+  --output chains.json
 ```
 
 ### 3. 查看结果
@@ -61,6 +67,8 @@ Usage:
 Options:
   -s, --service <path>       单个服务目录路径
   --services <paths>         多个服务路径（逗号分隔）
+  -d, --services-dir <dir>   从父目录下自动发现服务（匹配 pom.xml 或 src/main/java）
+  -r, --recursive            递归方式从父目录发现服务
   -o, --output <file>        输出 JSON 文件路径 (默认: analysis-result.json)
   --pretty                   格式化 JSON 输出
   -h, --help                 显示帮助信息
@@ -74,6 +82,11 @@ Options:
 # 分析测试项目
 java -jar target/call-chain-analyzer-1.0.0-SNAPSHOT-jar-with-dependencies.jar \
   --service ./test-project/user-service \
+  --output test-result.json
+
+# 从父目录自动发现并分析（非递归示例）
+java -jar target/call-chain-analyzer-1.0.0-SNAPSHOT-jar-with-dependencies.jar \
+  --services-dir ./test-project \
   --output test-result.json
 ```
 

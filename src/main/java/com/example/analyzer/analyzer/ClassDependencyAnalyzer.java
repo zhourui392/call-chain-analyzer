@@ -142,7 +142,11 @@ public class ClassDependencyAnalyzer {
 
         for (AnnotationExpr annotation : classDecl.getAnnotations()) {
             String annotationName = annotation.getNameAsString();
-            switch (annotationName) {
+            // Support both simple and fully-qualified annotation names
+            String name = annotationName.contains(".")
+                    ? annotationName.substring(annotationName.lastIndexOf('.') + 1)
+                    : annotationName;
+            switch (name) {
                 case "RestController":
                 case "Controller":
                     return ClassType.CONTROLLER;

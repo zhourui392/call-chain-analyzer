@@ -116,6 +116,81 @@ public class MethodCallAnalyzer {
                         methodCall.setCrossService(false);
                     }
 
+                    // Try to resolve target method within the same service (best-effort)
+                    if (methodCall.getCallType() == CallType.INTERNAL_METHOD_CALL) {
+                        String scope = call.getScope().map(Object::toString).orElse(null);
+
+                        // Candidate target classes
+                        List<ClassInfo> candidateClasses = new ArrayList<>();
+
+                        if (scope == null || "this".equals(scope)) {
+                            // Unscoped or this.method() => same class
+                            candidateClasses.add(sourceClass);
+                        } else {
+                            // Field-based call: match class dependency by field name
+                            sourceClass.getDependencies().stream()
+                                    .filter(dep -> dep.getFieldName().equals(scope))
+                                    .findFirst()
+                                    .ifPresent(dep -> {
+                                        String typeName = dep.getTargetQualifiedName();
+                                        // Try qualified match first
+                                        analysisResult.getClasses().stream()
+                                                .filter(c -> c.getQualifiedName() != null && c.getQualifiedName().equals(typeName))
+                                                .findFirst()
+                                                .ifPresent(candidateClasses::add);
+                                        if (candidateClasses.isEmpty()) {
+                                            // Fallback to simple name match or endsWith
+                                            analysisResult.getClasses().stream()
+                                                    .filter(c -> c.getClassName() != null && c.getClassName().equals(typeName)
+                                                            || (c.getQualifiedName() != null && c.getQualifiedName().endsWith("." + typeName)))
+                                                    .findFirst()
+                                                    .ifPresent(candidateClasses::add);
+                                        }
+                                    });
+
+                            // Static call like ClassName.method() (no matching field)
+                            if (candidateClasses.isEmpty()) {
+                                String typeName = scope;
+                                analysisResult.getClasses().stream()
+                                        .filter(c -> (c.getQualifiedName() != null && (c.getQualifiedName().equals(typeName)
+                                                || c.getQualifiedName().endsWith("." + typeName)))
+                                                || (c.getClassName() != null && c.getClassName().equals(typeName)))
+                                        .findFirst()
+                                        .ifPresent(candidateClasses::add);
+                            }
+                        }
+
+                        // Resolve target method by name and arg count
+                        if (!candidateClasses.isEmpty()) {
+                            int argCount = call.getArguments().size();
+                            for (ClassInfo targetClass : candidateClasses) {
+                                MethodInfo resolved = analysisResult.getMethods().stream()
+                                        .filter(m -> m.getClassId().equals(targetClass.getId()))
+                                        .filter(m -> calledMethodName.equals(m.getMethodName()))
+                                        .filter(m -> m.getParameters() != null && m.getParameters().size() == argCount)
+                                        .findFirst()
+                                        .orElse(null);
+                                if (resolved == null) {
+                                    // Fallback: match by name only if unique within class
+                                    List<MethodInfo> sameName = new ArrayList<>();
+                                    for (MethodInfo mi : analysisResult.getMethods()) {
+                                        if (mi.getClassId().equals(targetClass.getId()) && calledMethodName.equals(mi.getMethodName())) {
+                                            sameName.add(mi);
+                                        }
+                                    }
+                                    if (sameName.size() == 1) {
+                                        resolved = sameName.get(0);
+                                    }
+                                }
+                                if (resolved != null) {
+                                    methodCall.setTargetMethodId(resolved.getId());
+                                    methodCall.setTargetQualifiedMethod(targetClass.getQualifiedName() + "." + resolved.getMethodName());
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
                     methodCalls.add(methodCall);
                     logger.debug("Found method call: {} at line {}",
                             call.getNameAsString(),
@@ -138,12 +213,12 @@ public class MethodCallAnalyzer {
      */
     public boolean isHttpEndpoint(MethodInfo method) {
         for (String annotation : method.getAnnotations()) {
-            if (annotation.contains("@GetMapping") ||
-                annotation.contains("@PostMapping") ||
-                annotation.contains("@PutMapping") ||
-                annotation.contains("@DeleteMapping") ||
-                annotation.contains("@PatchMapping") ||
-                annotation.contains("@RequestMapping")) {
+            if (annotation.contains("GetMapping") ||
+                annotation.contains("PostMapping") ||
+                annotation.contains("PutMapping") ||
+                annotation.contains("DeleteMapping") ||
+                annotation.contains("PatchMapping") ||
+                annotation.contains("RequestMapping")) {
                 return true;
             }
         }
@@ -159,7 +234,7 @@ public class MethodCallAnalyzer {
 
         // Get class-level path
         for (String annotation : classInfo.getAnnotations()) {
-            if (annotation.contains("@RequestMapping")) {
+            if (annotation.contains("RequestMapping")) {
                 classPath = extractPathFromAnnotation(annotation);
             }
         }
@@ -171,10 +246,10 @@ public class MethodCallAnalyzer {
 
                 // Also extract HTTP method
                 String httpMethod = "GET";  // default
-                if (annotation.contains("@PostMapping")) httpMethod = "POST";
-                else if (annotation.contains("@PutMapping")) httpMethod = "PUT";
-                else if (annotation.contains("@DeleteMapping")) httpMethod = "DELETE";
-                else if (annotation.contains("@PatchMapping")) httpMethod = "PATCH";
+                if (annotation.contains("PostMapping")) httpMethod = "POST";
+                else if (annotation.contains("PutMapping")) httpMethod = "PUT";
+                else if (annotation.contains("DeleteMapping")) httpMethod = "DELETE";
+                else if (annotation.contains("PatchMapping")) httpMethod = "PATCH";
 
                 return httpMethod + " " + classPath + methodPath;
             }

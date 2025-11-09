@@ -22,11 +22,13 @@ public class CallChainEngine {
     private final ProjectScanner projectScanner;
     private final ClassDependencyAnalyzer classDependencyAnalyzer;
     private final MethodCallAnalyzer methodCallAnalyzer;
+    private final DubboInterfaceRegistry dubboRegistry;
 
     public CallChainEngine() {
         this.projectScanner = new ProjectScanner();
         this.classDependencyAnalyzer = new ClassDependencyAnalyzer();
         this.methodCallAnalyzer = new MethodCallAnalyzer();
+        this.dubboRegistry = new DubboInterfaceRegistry();
     }
 
     /**
@@ -48,6 +50,11 @@ public class CallChainEngine {
         for (ServiceInfo service : services) {
             analyzeService(service, result);
         }
+
+        // Step 2.5: Build Dubbo interface registry
+        logger.info("Building Dubbo interface registry");
+        dubboRegistry.buildFromClasses(result.getClasses());
+        logger.info("Dubbo registry: {}", dubboRegistry.getStatistics());
 
         // Step 3: Build call chains from entry points
         buildCallChains(result);
@@ -211,7 +218,7 @@ public class CallChainEngine {
     }
 
     /**
-     * Recursively build call chain
+     * Recursively build call chain with cross-service support
      */
     private void buildCallChainRecursive(String currentMethodId,
                                          String currentServiceId,
@@ -228,8 +235,34 @@ public class CallChainEngine {
         // Find all calls from current method
         for (MethodCall call : result.getMethodCalls()) {
             if (call.getSourceMethodId().equals(currentMethodId)) {
-                // For now, we only track calls we can resolve
-                if (call.getTargetMethodId() != null) {
+
+                if (call.getCallType() == CallType.RPC_METHOD_CALL && call.isCrossService()) {
+                    // Handle RPC call - try to resolve target method in another service
+                    MethodInfo targetMethod = resolveDubboMethod(call.getTargetQualifiedMethod(), result);
+
+                    if (targetMethod != null) {
+                        ClassInfo targetClass = result.getClassById(targetMethod.getClassId());
+                        if (targetClass != null) {
+                            logger.debug("Resolved RPC call to: {}.{} in service: {}",
+                                    targetClass.getClassName(), targetMethod.getMethodName(),
+                                    targetClass.getServiceId());
+
+                            CallChain.CallChainNode node = new CallChain.CallChainNode(
+                                    level, targetMethod.getId(), targetClass.getId(), targetClass.getServiceId());
+                            node.setCallType(call.getCallType());
+                            chain.addNode(node);
+                            chain.addInvolvedService(targetClass.getServiceId());
+
+                            // Continue recursively in target service
+                            buildCallChainRecursive(targetMethod.getId(), targetClass.getServiceId(),
+                                    level + 1, chain, result, visited);
+                        }
+                    } else {
+                        logger.debug("Could not resolve RPC call target: {}", call.getTargetQualifiedMethod());
+                    }
+
+                } else if (call.getTargetMethodId() != null) {
+                    // Internal call - continue as before
                     MethodInfo targetMethod = result.getMethodById(call.getTargetMethodId());
                     if (targetMethod != null) {
                         ClassInfo targetClass = result.getClassById(targetMethod.getClassId());
@@ -245,11 +278,55 @@ public class CallChainEngine {
                                     level + 1, chain, result, visited);
                         }
                     }
-                } else if (call.isCrossService()) {
-                    // RPC call - might not be able to resolve target
-                    logger.debug("Found cross-service RPC call: {}", call.getTargetQualifiedMethod());
                 }
             }
         }
+    }
+
+    /**
+     * Resolve Dubbo method call to actual implementation
+     * @param targetQualifiedMethod Format: "com.example.OrderService.getOrders"
+     * @return MethodInfo of the implementation, or null if not found
+     */
+    private MethodInfo resolveDubboMethod(String targetQualifiedMethod, AnalysisResult result) {
+        if (targetQualifiedMethod == null || !targetQualifiedMethod.contains(".")) {
+            return null;
+        }
+
+        // Parse the qualified method
+        int lastDot = targetQualifiedMethod.lastIndexOf('.');
+        String interfaceName = targetQualifiedMethod.substring(0, lastDot);
+        String methodName = targetQualifiedMethod.substring(lastDot + 1);
+
+        // Try to find implementation
+        DubboInterfaceRegistry.DubboServiceImpl impl = dubboRegistry.resolve(interfaceName);
+        if (impl == null) {
+            // Try with simple name
+            int secondLastDot = interfaceName.lastIndexOf('.');
+            if (secondLastDot > 0) {
+                String simpleName = interfaceName.substring(secondLastDot + 1);
+                impl = dubboRegistry.resolve(simpleName);
+            }
+        }
+
+        if (impl == null) {
+            return null;
+        }
+
+        // Find method in implementation class
+        ClassInfo implClass = result.getClassById(impl.getImplClassId());
+        if (implClass == null) {
+            return null;
+        }
+
+        // Find matching method by name
+        for (MethodInfo method : result.getMethods()) {
+            if (method.getClassId().equals(implClass.getId()) &&
+                method.getMethodName().equals(methodName)) {
+                return method;
+            }
+        }
+
+        return null;
     }
 }

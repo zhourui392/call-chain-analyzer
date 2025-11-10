@@ -121,9 +121,22 @@ public class ProjectScanner {
         try {
             Path pom = dir.resolve("pom.xml");
             Path srcMainJava = dir.resolve(Paths.get("src", "main", "java"));
+
+            // Skip if no pom.xml and no src/main/java
+            if (!Files.exists(pom) && !Files.exists(srcMainJava)) {
+                return false;
+            }
+
+            // If pom.xml exists, check if it's a parent POM (packaging=pom)
             if (Files.exists(pom)) {
+                if (isParentPom(pom.toFile())) {
+                    logger.debug("Skipping parent POM directory: {}", dir);
+                    return false;
+                }
                 return true;
             }
+
+            // If has src/main/java but no pom.xml, still consider it a service
             if (Files.exists(srcMainJava) && Files.isDirectory(srcMainJava)) {
                 return true;
             }
@@ -131,6 +144,31 @@ public class ProjectScanner {
             logger.debug("Skip invalid path {}: {}", dir, e.getMessage());
         }
         return false;
+    }
+
+    /**
+     * Check if a pom.xml is a parent POM (packaging=pom)
+     */
+    private boolean isParentPom(File pomFile) {
+        try {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder builder = factory.newDocumentBuilder();
+            Document doc = builder.parse(pomFile);
+            doc.getDocumentElement().normalize();
+
+            NodeList packagingNodes = doc.getElementsByTagName("packaging");
+            if (packagingNodes.getLength() > 0) {
+                Element packagingElement = (Element) packagingNodes.item(0);
+                String packaging = packagingElement.getTextContent().trim();
+                return "pom".equalsIgnoreCase(packaging);
+            }
+
+            // Default packaging is jar if not specified
+            return false;
+        } catch (Exception e) {
+            logger.debug("Failed to check POM packaging: {}", e.getMessage());
+            return false;
+        }
     }
 
     /**

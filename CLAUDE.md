@@ -37,6 +37,13 @@ java -jar target/call-chain-analyzer-1.0.0-SNAPSHOT-jar-with-dependencies.jar \
   --recursive \
   --output chains.json
 
+# Analyze multi-module Maven projects
+# (automatically filters out parent POMs with packaging=pom)
+java -jar target/call-chain-analyzer-1.0.0-SNAPSHOT-jar-with-dependencies.jar \
+  --services-dir ./multi-module-project \
+  --recursive \
+  --output result.json
+
 # Pretty print JSON output
 java -jar target/call-chain-analyzer-1.0.0-SNAPSHOT-jar-with-dependencies.jar \
   --service ./test-project/user-service \
@@ -62,6 +69,8 @@ The tool follows a five-stage analysis pipeline:
    - Scans directories for Maven projects (pom.xml) or standard src/main/java structures
    - Extracts service metadata: groupId, artifactId, version, base package
    - Supports recursive discovery under parent directories
+   - **Multi-module Maven Project Support**: Automatically filters out parent POMs (packaging=pom) and only analyzes child modules with actual source code
+   - Each child module is treated as an independent analysis unit with unique serviceId
 
 2. **Class-Level Analysis** (`ClassDependencyAnalyzer`)
    - Identifies class types via annotations: @RestController, @Service, @Repository, @Component, @Configuration, @DubboService
@@ -167,6 +176,66 @@ Key model classes in `com.example.analyzer.model`:
 7. **HTTP Clients**: RestTemplate, FeignClient calls not yet tracked
 8. **MyBatis**: Database mapper calls not analyzed
 9. **Message Queues**: RabbitMQ, Kafka producers/consumers not tracked
+
+## Multi-Module Maven Project Support
+
+The tool has built-in support for analyzing multi-module Maven projects commonly used in Spring Boot + Dubbo microservices.
+
+### How It Works
+
+When using `--services-dir` with `--recursive`, the tool:
+
+1. **Discovers all Maven modules** by recursively scanning for pom.xml files
+2. **Filters out parent POMs** that have `<packaging>pom</packaging>` (they contain no source code)
+3. **Analyzes each child module independently** as a separate service unit
+4. **Tracks cross-module calls** within the same logical service
+
+### Example Structure
+
+```
+services/
+├── user-service/                    # Parent POM (filtered out)
+│   ├── pom.xml                     # <packaging>pom</packaging>
+│   ├── user-service-api/           # Analyzed ✓
+│   │   ├── pom.xml
+│   │   └── src/main/java/
+│   ├── user-service-dao/           # Analyzed ✓
+│   ├── user-service-manager/       # Analyzed ✓
+│   └── user-service-web/           # Analyzed ✓
+└── order-service/                   # Parent POM (filtered out)
+    ├── pom.xml                     # <packaging>pom</packaging>
+    ├── order-service-api/          # Analyzed ✓
+    └── order-service-impl/         # Analyzed ✓
+```
+
+### Analysis Results
+
+Each child module becomes an independent service in the output with:
+- **Unique serviceId**: UUID for each module
+- **Unique rootPath**: Full path to the module directory
+- **Unique basePackage**: Detected from the module's source structure
+- **Shared artifactId**: Inherited from parent POM (for logical grouping)
+
+### Call Chain Behavior
+
+- **Intra-module calls**: Method calls within the same module are marked as `INTERNAL_METHOD_CALL`
+- **Inter-module calls**: Calls between modules of the same parent project are also `INTERNAL_METHOD_CALL` (resolved via field injection)
+- **Cross-service calls**: Dubbo RPC calls to other services are marked as `RPC_METHOD_CALL`
+
+### Usage
+
+```bash
+# Analyze all modules under a parent directory
+java -jar target/call-chain-analyzer-1.0.0-SNAPSHOT-jar-with-dependencies.jar \
+  --services-dir ./services \
+  --recursive \
+  --output analysis.json
+
+# Results will include:
+# - 11 services (child modules only)
+# - Call chains spanning multiple modules
+# - Dubbo interface registry for RPC calls
+```
 
 ## Development Notes
 
